@@ -1,0 +1,86 @@
+\section{Estabilidade de Routh}
+
+\begin{frame}{Critério de Estabilidade de Routh}
+  \scriptsize
+  Dado o polinômio característico:
+  $$a_0 s^n + a_1 s^{n-1} + a_2 s^{n-2} + \cdots + a_{n-1} s + a_n = 0, \quad a_0 \neq 0$$
+  \begin{columns}
+    \column{0.4\textwidth}
+    \textbf{Condições necessárias:}
+    \begin{enumerate}
+      \item $a_n \neq 0$
+      \item Todos os coeficientes $a_j$ devem ter o mesmo sinal
+    \end{enumerate}
+    \textbf{Condição necessária e suficiente:} todos os elementos da \textbf{primeira coluna} da tabela de Routh devem ser positivos (>0). \\
+    \vspace{0.3cm}
+    Os elementos da tabela são calculados recursivamente:
+    \begin{align*}
+      b_k &= \frac{a_1 \cdot a_{2k} - a_0 \cdot a_{2k+1}}{a_1}, \\
+      c_k &= \frac{b_1 \cdot a_{2k+1} - a_1 \cdot b_{k+1}}{b_1}
+    \end{align*}
+    \column{0.6\textwidth}
+    \small
+    \begin{center}
+      \begin{tabular}{c|ccc}
+        $s^n$     & $a_0$ & $a_2$ & $a_4$ \\
+        $s^{n-1}$ & $a_1$ & $a_3$ & $a_5$ \\
+        $s^{n-2}$ & $b_1 = \dfrac{a_1 a_2 - a_0 a_3}{a_1}$
+        & $b_2 = \dfrac{a_1 a_4 - a_0 a_5}{a_1}$
+        & $\cdots$ \\
+        $s^{n-3}$ & $c_1 = \dfrac{b_1 a_3 - a_1 b_2}{b_1}$
+        & $c_2 = \dfrac{b_1 a_5 - a_1 b_3}{b_1}$
+        & $\cdots$ \\
+        $\vdots$  & $\vdots$ & $\vdots$ & \\
+        $s^0$     & $a_n$ & & \\
+      \end{tabular}
+    \end{center}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Casos Especiais e Análise de Desempenho}
+  \scriptsize
+  \textbf{Casos Especiais:}
+  \begin{enumerate}
+    \item \textbf{Zero isolado na primeira coluna:} substitua o zero por $\varepsilon > 0$ e calcule $\lim_{\varepsilon \to 0^+}$ os elementos subsequentes.
+    \item \textbf{Linha inteira nula:} substitua a linha pelos coeficientes da derivada do polinômio auxiliar formado pela linha imediatamente anterior.
+    \item \textbf{Sistemas de 2ª ordem:} $a_0 s^2 + a_1 s + a_2 = 0$ é estável \textit{se e somente se} todos os coeficientes tiverem o mesmo sinal — nenhuma tabela é necessária.
+  \end{enumerate}
+  \vspace{0.4em}
+  \textbf{Análise de Desempenho — Deslocamento do Eixo:}
+  Para verificar se todos os polos estão à esquerda de $-\sigma$ (i.e., garantir uma taxa de decaimento mínima), realiza-se a substituição:
+  \begin{equation*}
+    s = \hat{s} - \sigma, \qquad \sigma > 0
+  \end{equation*}
+  O polinômio $d(s)$ é reescrito em termos de $\hat{s}$ e a tabela de Routh é aplicada normalmente ao novo polinômio. Se todos os elementos da primeira coluna forem positivos, \textbf{não há polos lentos} à direita de $-\sigma$.
+\end{frame}
+
+\begin{frame}{Exemplo: Estabilidade do Sistema Maglev}
+  \scriptsize
+  O polinômio característico da malha fechada é de 3ª ordem:
+  \begin{equation*}
+    d(s) = \underbrace{\tau_I}_{a_0} s^3
+    + \underbrace{(1 - \alpha_2\tau_I)}_{a_1} s^2
+    + \underbrace{(-\alpha_1\tau_I - \alpha_2 + \alpha_3 K_I\tau_I)}_{a_2}\, s
+    + \underbrace{(-\alpha_1 + \alpha_3(K_I+1))}_{a_3}
+  \end{equation*}
+  \textbf{Tabela de Routh:}
+  \begin{center}
+    \begin{tabular}{c|cc}
+      $s^3$ & $a_0 = \tau_I$ & $a_2 = -\alpha_1\tau_I - \alpha_2 + \alpha_3 K_I\tau_I$ \\
+      $s^2$ & $a_1 = 1-\alpha_2\tau_I$ & $a_3 = -\alpha_1+\alpha_3(K_I+1)$ \\
+      $s^1$ & $b_1 = \dfrac{a_1 a_2 - a_0 a_3}{a_1}$ & $0$ \\
+      $s^0$ & $a_3 = -\alpha_1 + \alpha_3(K_I+1)$ & \\
+    \end{tabular}
+  \end{center}
+  \textbf{Condições de estabilidade} (primeira coluna $> 0$):
+  \begin{enumerate}
+    \item $\tau_I > 0$
+    \item $1 - \alpha_2\tau_I > 0$
+    \item $a_1 a_2 - a_0 a_3 > 0$, isto é:
+      \begin{equation*}
+        (1-\alpha_2\tau_I)(-\alpha_1\tau_I - \alpha_2 + \alpha_3 K_I\tau_I)
+        > \tau_I\,(-\alpha_1 + \alpha_3(K_I+1))
+      \end{equation*}
+    \item $-\alpha_1 + \alpha_3(K_I+1) > 0 \implies K_I > \dfrac{\alpha_1}{\alpha_3} - 1$
+  \end{enumerate}
+\end{frame}

@@ -1,0 +1,132 @@
+\section{Sistemas de 1° Ordem}
+
+\begin{frame}{Polos, Zeros e Estabilidade}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.4\textwidth}
+    \textbf{Forma geral}
+    \begin{equation*}
+      G(s)=K \frac{(s-z_1)(s-z_2)\cdots(s-z_m)}{(s-p_1)(s-p_2)\cdots(s-p_n)}
+    \end{equation*}
+    \textbf{Definições}
+    \begin{itemize}
+      \item Polo ($p_i$): raiz do denominador
+      \item Zero ($z_i$): raiz do numerador
+    \end{itemize}
+    \textbf{Interpretação}
+    \begin{itemize}
+      \item Polos $\Rightarrow$ modos naturais ($e^{st}$), dinâmica e estabilidade
+      \item Zeros $\Rightarrow$ moldam a resposta transitória
+    \end{itemize}
+    \column{0.6\textwidth}
+    \textbf{Estabilidade}
+    \begin{itemize}
+      \item Estável se todos os polos têm parte real negativa
+    \end{itemize}
+    \textbf{Plano-$s$ (polos e zeros)}
+    \begin{center}
+      \begin{tikzpicture}[scale=0.8]
+        % eixos
+        \draw[->] (-3,0) -- (3,0) node[right] {Re};
+        \draw[->] (0,-2) -- (0,2) node[above] {Im};
+        % polos (X)
+        \draw (-1.5,0.8) node {$\times$};
+        \draw (-1.5,-0.8) node {$\times$};
+        % zeros (O)
+        \draw (-0.5,0) node {$\circ$};
+        \draw (1,0.5) node {$\circ$};
+      \end{tikzpicture}
+      \\
+      $\times$ polos \quad $\circ$ zeros
+    \end{center}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Sistema de 1ª Ordem}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.4\textwidth}
+    \textbf{Função de transferência}
+    \begin{equation*}
+      G(s)=\frac{K}{\tau s+1}
+    \end{equation*}
+    \textbf{Parâmetros}
+    \begin{itemize}
+      \item $K$: ganho ($\frac{\Delta y}{\Delta u}$)
+      \item $\tau$: constante de tempo
+    \end{itemize}
+    \textbf{Constante de tempo}
+    \begin{itemize}
+      \item $\tau \Rightarrow 63\%$
+      \item $2\tau \Rightarrow 86\%$
+      \item $3\tau \Rightarrow 95\%$
+      \item $5\tau \Rightarrow 99\%$
+    \end{itemize}
+    \column{0.6\textwidth}
+    \textbf{Respostas (sistema linear e invariante no tempo)}
+    \vspace{0.2cm}
+    \begin{tabular}{c|c c c}
+      & impulso & degrau & rampa \\
+      \hline
+      $x(t)$ & $\delta$ & $u(t)$ & $t$ \\
+      $y(t)$ & $\frac{K}{\tau}e^{-t/\tau}$
+      & $K(1-e^{-t/\tau})$
+      & $K \cdot t-K \cdot \tau(1-e^{-t/\tau})$
+    \end{tabular}
+    \vspace{0.3cm} \\
+    \textbf{Relação}
+    \begin{itemize}
+      \item impulso $\xrightarrow{\int}$ degrau $\xrightarrow{\int}$ rampa
+      \item rampa $\xrightarrow{d/dt}$ degrau $\xrightarrow{d/dt}$ impulso
+    \end{itemize}
+    \vspace{0.2cm}
+    \textbf{Polos e zeros}
+    \begin{itemize}
+      \item Polo ($p$): $\Rightarrow s=-\frac{1}{\tau}$
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Efeito da posição do zero}
+  \begin{equation*}
+    G(s) = K \cdot \frac{\left(-\frac{s}{z} + 1\right)}{\tau s + 1}
+  \end{equation*}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item $z \ll -\frac{1}{\tau}$: salto inicial pequeno
+        \begin{itemize}
+          \item Quanto mais a esquerda menor o salto
+          \item Sistema tende ao padrão de 1ª ordem
+        \end{itemize}
+      \item Aproximando do polo:
+        \begin{itemize}
+          \item Resposta mais rápida
+          \item Salto inicial ficando maior
+        \end{itemize}
+      \item $z = -\frac{1}{\tau}$ (igual ao polo):
+        \begin{itemize}
+          \item Cancelamento polo-zero
+          \item Resposta torna-se uma reta
+        \end{itemize}
+    \end{itemize}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item Entre polo e origem:
+        \begin{itemize}
+          \item Surge overshoot
+          \item Aumenta ao se aproximar de $0$
+        \end{itemize}
+      \item Zero positivo ($z > 0$): Resposta inversa:
+        \begin{itemize}
+          \item Saída começa no sentido oposto
+          \item Efeito muito intenso
+        \end{itemize}
+      \item Aumentando $z$:
+        \begin{itemize}
+          \item Resposta inversa diminui
+          \item Sistema tende ao padrão de 1ª ordem
+        \end{itemize}
+    \end{itemize}
+  \end{columns}
+\end{frame}

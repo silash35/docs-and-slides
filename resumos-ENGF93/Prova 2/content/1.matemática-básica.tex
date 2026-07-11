@@ -1,0 +1,91 @@
+\section{Matemática Básica}
+
+\begin{frame}{Senoides, Fasores e Números Complexos}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.33\textwidth}
+    \textbf{Senoide}
+    $$x(t)=A\sin(\omega t+\phi)$$
+    \begin{itemize}
+      \item $A$: amplitude
+      \item $\omega$: freq. angular (rad/s)
+      \item $\phi$: fase (rad)
+      \item $T$: período (s)
+      \item $f$: frequência (Hz)
+    \end{itemize}
+    $$f=\frac{1}{T}$$
+    $$\omega=2\pi f$$
+    $$T=\frac{2\pi}{\omega}$$
+    \column{0.33\textwidth}
+    \textbf{Seno e Cosseno}
+    $$\cos\theta=\sin\left(\theta+\frac{\pi}{2}\right)$$
+    $$\sin\theta=\cos\left(\theta-\frac{\pi}{2}\right)$$
+    \textbf{Defasagem}
+    $$A\sin(\omega t+\phi)$$
+    \begin{itemize}
+      \item $\phi>0$: adiantado
+      \item $\phi<0$: atrasado
+    \end{itemize}
+    Exemplo:
+    $$\sin(\omega t+\pi/4)$$
+    adiantado de $45^\circ$.
+    \column{0.33\textwidth}
+    \textbf{Euler}
+    $$e^{j\theta}=\cos\theta+j\sin\theta$$
+    $$e^{-j\theta}=\cos\theta-j\sin\theta$$
+    \textbf{Números Complexos}
+    Forma retangular:
+    $$z=a+jb$$
+    Forma polar:
+    $$z=re^{j\theta}$$
+    onde
+    $$r=\sqrt{a^2+b^2}, \qquad \theta=\arctan\frac{b}{a}$$
+    $$a=r\cos\theta, \qquad b=r\sin\theta$$
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \includegraphics[width=1\textwidth]{funções.png}
+\end{frame}
+
+\begin{frame}{Conversões Úteis}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.25\textwidth}
+    \begin{block}{Graus $\leftrightarrow$ Radianos}
+      $$180^\circ=\pi\text{ rad}$$
+      $$\theta_{\text{rad}}=\theta_{^\circ}\frac{\pi}{180}$$
+      $$\theta_{^\circ}=\theta_{\text{rad}}\frac{180}{\pi}$$
+      Ângulos comuns:
+      $$30^\circ=\frac{\pi}{6}, \qquad 45^\circ=\frac{\pi}{4}$$
+      $$60^\circ=\frac{\pi}{3}, \qquad 90^\circ=\frac{\pi}{2}$$
+      $$180^\circ=\pi$$
+    \end{block}
+    \column{0.40\textwidth}
+    \begin{block}{Frequência (Hz) $\leftrightarrow$ Frequência Angular (rad/s)}
+      $$\omega=2\pi f$$
+      $$f=\frac{\omega}{2\pi}$$
+      Exemplos: \\
+      $1\text{ Hz}=2\pi\text{ rad/s}$ \\
+      $60\text{ Hz}=120\pi\text{ rad/s}$
+    \end{block}
+    \begin{block}{Decibel $\leftrightarrow$ Ganho Decimal}
+      Para amplitude:
+      $$G_{dB}=20\log_{10}(G)$$
+      $$G=10^{G_{dB}/20}$$
+      Exemplos: \\
+      $20\text{ dB}=10 \qquad -20\text{ dB}=0.1$
+    \end{block}
+    \column{0.35\textwidth}
+    \begin{block}{Período, Frequência e Frequência Angular}
+      Unidades:
+      $$T[\text{s}]$$
+      $$f[\text{Hz}]=\frac{1}{T[\text{s}]}$$
+      $$\omega[\text{rad/s}]=\frac{2\pi}{T[\text{s}]}$$
+      Exemplo:
+      $$T=20\text{ ms}=0.02\text{ s}$$
+      $$f=\frac{1}{0.02}=50\text{ Hz}$$
+      $$\omega=2\pi\cdot50=100\pi\text{ rad/s}$$
+    \end{block}
+  \end{columns}
+\end{frame}

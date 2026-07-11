@@ -1,0 +1,62 @@
+\section{Tempo Morto}
+
+\begin{frame}{Tempo Morto}
+  O tempo morto (ou atraso de transporte) ocorre quando a saída de um sistema reproduz a entrada com um atraso $t_0$:
+  \begin{equation*}
+    y(t) = u(t - t_0)
+  \end{equation*}
+  cuja transformada de Laplace é:
+  \begin{equation*}
+    Y(s) = e^{-s t_0}\, U(s)
+  \end{equation*}
+  \vspace{0.3em}
+  Portanto, para um sistema com função de transferência $G(s)$, o tempo morto entra como um fator multiplicativo:
+  \begin{equation*}
+    Y(s) = e^{-st_0}\, G(s)\, U(s)
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Exemplo: Sistema com Tempo Morto}
+  \scriptsize
+  Considere o sistema com entrada degrau unitário ($\Gamma_{in}(s) = 1/s$):
+  \begin{equation*}
+    Y(s) = \frac{0{,}21\, e^{-st_0}}{(\tau_1 s+1)(\tau_2 s+1)}\cdot\frac{1}{s},
+    \qquad \tau_1 = \frac{0{,}01}{3600},\quad \tau_2 = 2{,}5
+  \end{equation*}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \textbf{Frações parciais} (ignorando $e^{-st_0}$): \\
+    Reescrevendo $(\tau_i s+1) = \tau_i(s+1/\tau_i)$:
+    \begin{equation*}
+      \frac{0{,}21}{\tau_1\tau_2\, s(s+\frac{1}{\tau_1})(s+\frac{1}{\tau_2})}
+      = \frac{A_1}{s+\frac{1}{\tau_1}} + \frac{A_2}{s+\frac{1}{\tau_2}} + \frac{A_3}{s}
+    \end{equation*}
+    Avaliando nas raízes:
+    \begin{align*}
+      s=-\tfrac{1}{\tau_1}&: \quad A_1 = \frac{0{,}21\,\tau_1}{\tau_2 - \tau_1} \\
+      s=-\tfrac{1}{\tau_2}&: \quad A_2 = \frac{0{,}21\,\tau_2}{\tau_1 - \tau_2} \\
+      s=0&: \quad A_3 = 0{,}21
+    \end{align*}
+    \column{0.5\textwidth}
+    \textbf{Transformada inversa:}
+    
+    Cada termo:
+    \[
+    \frac{A_i}{s+\frac{1}{\tau_i}} \longleftrightarrow A_i\,e^{-t/\tau_i}
+    \]
+    
+    Reintroduzindo $e^{-st_0}$ (deslocamento temporal):
+    \[
+    e^{-st_0} F(s) \longleftrightarrow f(t-t_0)\cdot u(t-t_0)
+    \]
+    
+    Portanto:
+    \begin{equation*}
+      \boxed{y(t) = \left[
+          A_1 \cdot e^{-\frac{t-t_0}{\tau_1}}
+          + A_2 \cdot e^{-\frac{t-t_0}{\tau_2}}
+          + A_3
+      \right] u(t-t_0)}
+    \end{equation*}
+  \end{columns}
+\end{frame}

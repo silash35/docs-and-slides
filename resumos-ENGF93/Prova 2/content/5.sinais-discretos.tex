@@ -1,0 +1,117 @@
+\section{Sinais em tempo discreto}
+
+\begin{frame}{Amostragem e Retenção}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    Um sinal contínuo $x(t)$ é convertido em uma sequência discreta por um amostrador: \\
+    $x(t)\;\longrightarrow\;x(k)$ \\
+    onde $k\in\mathbb{Z}$ representa o índice da amostra. \\
+    Após o processamento digital: \\
+    $x(k)\;\longrightarrow\;y(k)$ \\
+    o sinal discreto é convertido novamente para um sinal contínuo por um retentor: \\
+    $y(k)\;\longrightarrow\;y(t)$
+    \begin{block}{Retentor de Ordem Zero}
+      O retentor mais simples é o de ordem zero.
+      Entre duas amostras consecutivas, ele mantém a saída constante até a chegada da próxima amostra.
+      Dessa forma, o sinal contínuo reconstruído possui formato em degraus.
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Tempo de Amostragem}
+      O intervalo entre duas amostras consecutivas é chamado de tempo de amostragem:
+      $$T_s$$
+      A frequência de amostragem é
+      $$f_s=\frac{1}{T_s}.$$
+    \end{block}
+    \begin{block}{aliasing}
+      Se $T_s$ for muito grande (ou $f_s$ muito pequena), informações importantes do sinal podem ser perdidas. \\
+      Em particular, pode ocorrer o fenômeno de \textbf{aliasing}, no qual componentes de alta frequência passam a ser interpretadas como componentes de frequência mais baixa.
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Sinais Senoidais Discretos}
+  \scriptsize
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{Conversão de Frequência}
+      Sinal contínuo:
+      $x(t)=\cos(\omega t)$
+      Após amostragem:
+      $$
+      x(k)=\cos(\Omega k), \Omega=\omega T_s.
+      $$
+      \textbf{Dica:}
+      converta sempre a frequência contínua $\omega$ para a frequência discreta $\Omega$ usando $\Omega=\omega T_s$.
+    \end{block}
+    \begin{block}{Periodicidade}
+      O período discreto $N_0$ satisfaz \\
+      $$N_0=\frac{2\pi m}{\Omega}.$$ \\
+      \textbf{Procedimento:}
+      escolha um inteiro $m$ (positivo ou negativo) que torne $N_0$ inteiro.
+      Se isso não for possível, o sinal não é periódico. \\
+      \textbf{Dica:}
+      quando $\Omega$ é uma fração de $\pi$, geralmente basta escolher $m$ para cancelar o denominador.
+    \end{block}
+    \column{0.5\textwidth}
+    Frequências que diferem de múltiplos de $2\pi$ geram as mesmas amostras: \\
+    $\cos(\Omega k)=\cos((\Omega+2\pi m)k)$.
+    \vspace{0.2cm} \\
+    \textbf{Procedimento:}
+    escolha $m$ inteiro para obter \\
+    $-\pi\le\Omega_f\le\pi$.
+    Se $\Omega_f\neq\Omega$, ocorreu aliasing e a senoide será representada por uma frequência mais baixa.
+    \vspace{0.2cm} \\
+    Exemplo com aliasing: \\
+    $8.7\pi=0.7\pi+2\pi\cdot4 \Rightarrow \Omega_f=0.7\pi$. \\
+    $1.7\pi=-0.3\pi+2\pi\cdot1 \Rightarrow \Omega_f=-0.3\pi$. \\
+    $-3.2\pi=0.8\pi+2\pi\cdot(-2) \Rightarrow \Omega_f=0.8\pi$. \\
+    Exemplo sem aliasing: \\
+    $\Omega=0.6\pi \Rightarrow \Omega_f=0.6\pi$.
+    \begin{block}{Regra Prática}
+      Para evitar aliasing: \\
+      $|\Omega|=\omega T_s\le\pi$. \\
+      Se $|\Omega|>\pi$, a frequência observada após a amostragem será uma frequência equivalente dentro do intervalo $[-\pi,\pi]$.
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Escolha do Tempo de Amostragem}
+  \scriptsize
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{block}{}
+      $f=\dfrac{1}{T}$ [Hz], \quad $\omega=2\pi f$ [rad/s], \quad $T=\dfrac{1}{f}$ [s], \quad $\omega=\dfrac{2\pi}{T}$ [rad/s].
+    \end{block}
+    \begin{block}{Teorema de Amostragem de Nyquist--Shannon}
+      Para evitar aliasing, a frequência de amostragem deve satisfazer
+
+      $$\omega_s \ge 2\omega$$
+
+      onde $\omega$ é a maior frequência presente no sinal.
+
+      Equivalentemente,
+      $\omega T_s \le \pi.$
+    \end{block}
+    \begin{block}{Sinais Arbitrários}
+      Utilize a FFT para identificar a maior frequência relevante $\omega$ do sinal.
+
+      Em geral, essa frequência corresponde ao limite entre o conteúdo útil e o ruído.
+
+      Em seguida, aplique o Teorema de Nyquist--Shannon.
+    \end{block}
+    \column{0.4\textwidth}
+    \begin{block}{Regras Práticas para Sistemas}
+      Sistema de 1ª ordem:
+      $$T_s \approx \frac{\tau}{10}.$$
+      Sistema de 2ª ordem:
+      $$\omega_d=\omega_n\sqrt{1-\xi^2}$$
+      e recomenda-se $\omega_s \ge 10\omega_d.$
+    \end{block}
+    \begin{block}{Resposta Temporal}
+      Para sistemas genéricos, utilize pelo menos 50 amostras ao longo da dinâmica principal do sistema.
+
+      Quando mais de um critério estiver disponível, escolha a maior frequência de amostragem (menor $T_s$).
+    \end{block}
+  \end{columns}
+\end{frame}

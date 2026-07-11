@@ -1,0 +1,38 @@
+\section{Filtros}
+
+\begin{frame}
+  \scriptsize
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{block}{Definições}
+      \textbf{Banda passante:}
+      faixa de frequências que atravessa o sistema com pouca atenuação.
+      \vspace{0.1cm} \\
+      \textbf{Banda rejeitada:}
+      faixa de frequências fortemente atenuadas.
+      \vspace{0.1cm}
+    \end{block}
+    \begin{block}{Filtros Mais Comuns}
+      \begin{itemize}
+        \item \textbf{Passa-Baixa (LPF):}
+              passa baixas frequências e rejeita altas.
+        \item \textbf{Passa-Alta (HPF):}
+              passa altas frequências e rejeita baixas.
+        \item \textbf{Passa-Faixa (BPF):}
+              passa apenas uma faixa de frequências.
+        \item \textbf{Rejeita-Faixa (Notch ou Band-Stop):}
+              rejeita apenas uma faixa de frequências.
+      \end{itemize}
+      Famílias comuns:
+      \begin{itemize}
+        \item Butterworth (banda plana)
+        \item Chebyshev (transição mais rápida com ondulações)
+      \end{itemize}
+    \end{block}
+    \textbf{Projeto (grosseiro):}
+    Escolhe-se $\omega_c$ entre a banda passante e a banda rejeitada. Se a atenuação for insuficiente, aumenta-se a ordem do filtro. \\
+    Por exemplo, para atenuar frequências acima de $X$, utiliza-se um filtro passa-baixa com $\omega_c=X$; para um filtro de primeira ordem, tem-se $\tau=\frac{1}{\omega_c}=\frac{1}{X}$.
+    \column{0.4\textwidth}
+    \includegraphics[width=1\textwidth]{filtros.png}
+  \end{columns}
+\end{frame}

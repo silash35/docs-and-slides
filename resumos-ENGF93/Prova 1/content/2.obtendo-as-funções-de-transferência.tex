@@ -1,0 +1,102 @@
+\section{Obtenção da Função de Transferência}
+
+\begin{frame}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Linearização (Taylor)}
+      \textbf{Ponto estacionário}
+      \begin{itemize}
+        \item $(x_{ss},u_{ss})$ tal que $f(x_{ss},u_{ss})=0$
+      \end{itemize}
+      \textbf{Variáveis de desvio}
+      \begin{itemize}
+        \item $\hat{x}=x-x_{ss}$
+        \item $\hat{u}=u-u_{ss}$
+      \end{itemize}
+      \textbf{Taylor}
+      \begin{itemize}
+        \item $f(x,u)\approx f(x_{ss},u_{ss}) + \frac{\partial f}{\partial x}(x_{ss},u_{ss})(x-x_{ss}) + \frac{\partial f}{\partial u}(x_{ss},u_{ss})(u-u_{ss})$
+      \end{itemize}
+      \textbf{Forma linear}
+      \begin{itemize}
+        \item $f(x,u)\approx A\hat{x}+B\hat{u}$
+        \item $A=\frac{\partial f}{\partial x}(x_{ss},u_{ss})$
+        \item $B=\frac{\partial f}{\partial u}(x_{ss},u_{ss})$
+      \end{itemize}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Transformada de Laplace}
+      \textbf{Definição}
+      \begin{equation*}
+        \mathcal{L}\{f(t)\} = F(s) = \int^{+\infty}_{0} f(t)\cdot e^{-s\cdot t}\cdot \text{d}t
+      \end{equation*}
+      \textbf{Propriedades}
+      \begin{itemize}
+        \item Linearidade: $\mathcal{L}\{af+bg\}=aF+bG$
+        \item Deslocamento: $e^{at}f(t)\leftrightarrow F(s-a)$
+        \item Convolução: $f*g \leftrightarrow F(s)G(s)$
+      \end{itemize}
+      \textbf{Teorema da diferenciação real}
+      \begin{itemize}
+        \item $\mathcal{L}\{f'\}=sF-f(0)$
+        \item $\mathcal{L}\{f''\}=s^2F-sf(0)-f'(0)$
+        \item $\mathcal{L}\{f^{(n)}\}=s^nF-\sum_{k=0}^{n-1}s^{n-1-k}f^{(k)}(0)$
+      \end{itemize}
+      \textbf{Outros Teoremas}
+      \begin{itemize}
+        \item Integração real: $\mathcal{L}\{\int f\}=\frac{F}{s}$
+        \item Valor inicial: $f(0^+)=\lim_{s\to\infty}sF(s)$
+        \item Valor final: $\lim_{t\to\infty}f(t)=\lim_{s\to0}sF(s)$
+      \end{itemize}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Tabela de Transformada de Laplace (OGATA, 1990)}
+  \centering
+  \begin{columns}
+    \column{0.43\textwidth}
+    \begin{tabular}{c|c|c}
+      N. & $f(t)$      & $F(s)$ \\\hline
+      1  & $\delta(t)$ & 1 \\[2ex]
+      2  & $u(t)$ & $\frac{1}{s}$ \\[2ex]
+      3  & $t$    & $\frac{1}{s^2}$ \\[2ex]
+      4  & $t^n$  & $\frac{n!}{s^{n+1}}$ \\[2ex]
+      5  & $e^{-a\cdot t}$  & $\frac{1}{s+a}$
+      \\[2ex]
+      6  & $t\cdot e^{-a\cdot t}$  & $\frac{1}{(s+a)^2}$ \\[2ex]
+      7 & $\frac{1}{a}\cdot \left(1-e^{-a\cdot t}\right)$ & $\frac{1}{s\cdot (s+a)}$\\\hline
+    \end{tabular}
+    \column{0.57\textwidth}
+    \begin{tabular}{c|c|c}
+      N. & $f(t)$      & $F(s)$ \\\hline
+      8  & $\sin(w\cdot t)$ & $\frac{w}{s^2+w^2}$ \\[2ex]
+      9  & $\cos(w\cdot t)$ & $\frac{s}{s^2+w^2}$ \\[2ex]
+      10  & $e^{-a\cdot t}\cdot \sin(w\cdot t)$ & $\frac{w}{(s+a)^2+w^2}$\\[2ex]
+      11  & $e^{-a\cdot t}\cdot \cos(w\cdot t)$ & $\frac{s+a}{(s+a)^2+w^2}$\\[2ex]
+      12 & $1-\cos(w\cdot t)$ & $\frac{w^2}{s\cdot (s^2+w^2)}$\\[2ex]
+      13 & $w\cdot t - \sin(w\cdot t)$ & $\frac{w^3}{s^2\cdot (s^2+w^2)}$ \\[2ex]
+      14 & $\frac{1}{2\cdot w}\cdot t \cdot \sin(w\cdot t)$ & $\frac{s}{\left(s^2 + w^2\right)^2}$ \\\hline
+    \end{tabular}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Função de Transferência (Exemplo)}
+  Sistema não linear (exemplo): \\
+  $\dot{y}=-y^2+u, \qquad y_{ss}=1, u_{ss}=1$
+  \vspace{0.2cm} \\
+  Linearizando: \\
+  $\dot{\hat{y}} = -2\hat{y} + \hat{u}$
+  \vspace{0.2cm} \\
+  Aplicando Laplace: \\
+  $sY(s)-\hat{y}(0) = -2Y(s)+U(s)$ \\
+  $Y(s) = \frac{1}{s+2}U(s) + \frac{1}{s+2}\hat{y}(0)$
+  \begin{block}{}
+    $$Y(s)=
+    \underbrace{
+      \underbrace{G_1(s)}_{\text{Resposta de estado nulo}} \cdot U(s) +
+      \underbrace{G_2(s)}_{\text{Resposta de entrada nula}} \cdot \hat{y}(0)
+    }_{\text{Resposta total}}$$
+  \end{block}
+\end{frame}

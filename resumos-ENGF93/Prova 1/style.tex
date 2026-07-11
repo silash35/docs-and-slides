@@ -1,0 +1,73 @@
+\usepackage[alf]{abntex2cite}
+
+% --- Outros Pacotes ---
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+
+\usepackage{xkeyval}
+
+% --- Pacotes matemáticos ---
+\usepackage{amsmath}       % Recursos avançados de matemática
+\usepackage{esdiff}        % Facilita escrita de derivadas (\diff, \pdiff)
+\usepackage[version=4]{mhchem} % Escrever fórmulas químicas e reações
+
+% --- Pacotes gráficos ---
+\usepackage{tikz} % Desenhos
+\usepackage{hwemoji} % emojis
+\usepackage{minted} % código
+
+\graphicspath{ {../figures/} }
+
+% --- Configurações ---
+\usepackage[scaled=0.92]{helvet} % Fonte Helvetica
+
+% --- Cores personalizadas ---
+\definecolor{magenta}{HTML}{5e005e}
+\usecolortheme[named=magenta]{structure}
+
+% \setbeamercolor{background canvas}{bg=gray!5}
+
+% --- Configurações do Beamer ---
+\usetheme{Copenhagen} % Tema geral
+\setbeamertemplate{navigation symbols}{} % remove ícones de navegação
+\setbeamertemplate{headline}{}           % esconde barra de topo
+\setbeamertemplate{caption}[numbered]    % legendas numeradas
+
+\renewcommand{\sectionname}{Seção}
+\AtBeginSection[]{\frame{\sectionpage}}  % slide automático de seção
+
+% Rodapé com numeração simples
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    % Caixa para o autor
+    \begin{beamercolorbox}[
+        wd=.24\paperwidth,
+        ht=2.5ex,
+        dp=1.125ex,
+        leftskip=.01cm plus1fill,
+        rightskip=.05cm
+      ]{author in head/foot}%
+      \usebeamerfont{title in head/foot} \insertshortauthor %
+      \hspace*{2ex}%
+    \end{beamercolorbox}%
+
+    % Caixa para o título
+    \begin{beamercolorbox}[
+        wd=.76\paperwidth,
+        ht=2.5ex,
+        dp=1.125ex,
+        leftskip=.05cm,
+        rightskip=.15cm plus1fil
+      ]{title in head/foot}%
+      \usebeamerfont{title in head/foot}%
+      \hspace*{2ex}%
+      \insertshorttitle
+      \hfill%
+      \insertframenumber{} / \inserttotalframenumber %
+      \hspace*{2ex}%
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}

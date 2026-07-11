@@ -1,0 +1,163 @@
+\section{Sistemas de 2° Ordem}
+
+\begin{frame}
+  \scriptsize
+  \begin{columns}
+    \column{0.4\textwidth}
+    \textbf{Forma padrão}
+    \begin{equation*}
+      \frac{Y(s)}{U(s)} =  K\cdot\frac{w_n^2}{s^2 + 2\cdot \xi \cdot w_n \cdot s + w_n^2}
+    \end{equation*}
+    \textbf{Pólos}
+    \begin{itemize}
+      \item $r_1 = - \xi \cdot w_n + w_n\cdot \sqrt{\xi^2-1}$
+      \item $ r_2 = - \xi \cdot w_n - w_n\cdot\sqrt{\xi^2 - 1}$
+    \end{itemize}
+    \textbf{Definições}
+    \begin{itemize}
+      \item $K \rightarrow$ ganho
+      \item $\xi \rightarrow$ coeficiente de amortecimento
+      \item $w_n \rightarrow$ frequência natural não amortecida. Convenciona-se que $w_n$ seja maior do que zero.
+    \end{itemize}
+    \begin{block}{Como obter a forma padrão}
+      $$\frac{Y(s)}{U(s)} = \frac{b_0}{s^2 + a_1 s + a_0}$$
+      $$w_n^2 = a_0 \qquad 2\xi w_n = a_1 \qquad K = \frac{b_0}{a_0}$$
+    \end{block}
+    \column{0.6\textwidth}
+    \begin{itemize}
+      \item $\xi = 0$:
+            \begin{itemize}
+              \item Polos complexos conjugados com \textcolor{red}{parte real nula}
+              \item \textcolor{blue}{Oscilações sustentadas} (amplitude não decai)
+            \end{itemize}
+      \item $0 < \xi < 1$:
+            \begin{itemize}
+              \item \textcolor{red}{Polos complexos conjugados}
+              \item \textcolor{blue}{Subamortecido} (com oscilações)
+            \end{itemize}
+      \item $\xi = 1$:
+            \begin{itemize}
+              \item Polos reais (repetidos)
+              \item \textcolor{blue}{Criticamente amortecido} (não oscila)
+            \end{itemize}
+      \item $\xi > 1$:
+            \begin{itemize}
+              \item Polos reais distintos
+              \item \textcolor{blue}{Superamortecido} (não oscila)
+            \end{itemize}
+    \end{itemize}
+    \begin{block}{\textbf{Dica}}
+      Você pode identificar rapidamente se o sistema apresenta oscilações pelos polos. Há oscilações se existir um par de polos complexos conjugados (parte imaginária $\neq 0$).
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Caso superamortecido $\xi>1$ (com $K=1$)}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{Solução no tempo (resposta ao degrau unitário)}
+      \begin{equation*}
+        y(t) = 1 + \frac{w_n}{2\cdot \sqrt{\xi^2 - 1}}\cdot\left(\frac{e^{-a_1\cdot t}}{a_1} - \frac{e^{-a_2\cdot t}}{a_2}\right)
+      \end{equation*}
+      $a_1 = \xi \cdot w_n + w_n\cdot\sqrt{\xi^2 - 1}$
+      $a_2 = \xi \cdot w_n - w_n\cdot\sqrt{\xi^2 - 1}$
+    \end{block}
+    \begin{block}{Constantes de tempo}
+      \begin{equation*}
+        \tau_{a_1} = \frac{1}{a_1} \qquad \tau_{a_2} = \frac{1}{a_2}
+      \end{equation*}
+    \end{block}
+    \column{0.5\textwidth}
+    \scriptsize
+    \textbf{Aproximação de 1$^\text{o}$ ordem}
+    \begin{itemize}
+      \item Polos do sistema: \\
+            $r_1 = -a_2$ \\
+            $r_2 = -a_1$
+      \item Um polo é mais \textbf{rápido} quando está mais afastado da origem (mais negativo): \\
+            $|r_2| \gg |r_1| \;\;\Rightarrow\;\; a_1 \gg a_2$
+      \item Assim, despreza-se o polo rápido ($r_2$)
+      \item Função de transferência aproximada:
+            $G(s) \approx \frac{K}{s + a_2}$
+      \item Com:
+            $K = \lim_{s \to 0} G(s)$
+      \item Forma padrão de 1$^\text{o}$ ordem:
+            $G(s) \approx \frac{K}{\tau s + 1}, \quad \tau = \frac{1}{a_2}$
+    \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Caso criticamente amortecido $\xi=1$ (com $K=1$)}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \textbf{Solução no tempo (resposta ao degrau unitário)}
+    \begin{equation*}
+      y(t) = 1 -  e^{-w_n\cdot t}\cdot(w_n\cdot t +1)
+    \end{equation*}
+    \textbf{Laplace}
+    \begin{equation*}
+      Y(s) = \frac{w_n^2}{(s+w_n)^2} \cdot \frac{1}{s}
+    \end{equation*}
+    \textbf{Pólos}
+    \begin{itemize}
+      \item $r_1 = r_2 = -w_n$
+    \end{itemize}
+    \textbf{Constante de tempo} \\
+    $\tau = \frac{1}{w_n}$
+    \column{0.5\textwidth}
+    \includegraphics[trim = 35mm 85mm 43mm 90mm, clip, width=0.95\textwidth]{step_criticamente_amortecido.pdf}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Caso subamortecido $0<\xi<1$ (com $K=1$)}
+  \textbf{Solução no tempo (resposta ao degrau unitário)}
+  \begin{equation*}
+    y(t) = 1 - \frac{e^{-\xi\cdot w_n \cdot t}}{\sqrt{1-\xi^2}}\cdot \sin{(w_d\cdot t + \theta), \theta = tan^{-1}\left(\frac{\sqrt{1-\xi^2}}{\xi}\right)}
+  \end{equation*}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{Pólos}
+      $r_1 = - \xi \cdot w_n +  j \cdot w_d$ \\
+      $r_2 = - \xi \cdot w_n -  j \cdot w_d$
+    \end{block}
+    \begin{itemize}
+      \item sistema oscila com frequência $w_d$
+      \item Se $\xi=0$, sistema oscilaria com $w_n$
+      \item $\xi \Uparrow \rightarrow w_d \Downarrow$
+    \end{itemize}
+    \column{0.5\textwidth}
+    \begin{block}{Constante de tempo}
+      Está associada à parte real do polo (expoente da exponencial) \\
+      $\tau = \frac{1}{Real\left(polo\right)} = \frac{1}{\xi\cdot w_n}$
+    \end{block}
+    \begin{block}{Frequência de oscilação}
+      Está associada à parte imaginária do polo (argumento da senoide) \\
+      $w_d = w_n\cdot \sqrt{1-\xi^2}$
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Identificação de sistemas (caso subamortecido)}
+  \textcolor{red}{\textbf{CUIDADO:}} Faça os cálculos com os valores em desvio. \\
+  \begin{columns}
+    \column{0.5\textwidth}
+    \scriptsize
+    \textbf{Tempo de subida ($t_r$):} Tempo para a resposta ir de 0 até o valor final. \\
+    $t_r = \frac{\pi - \theta}{w_d},\qquad
+      \theta = \tan^{-1}\left(\frac{\sqrt{1-\xi^2}}{\xi}\right)$ \\
+    \textbf{Instante de pico ($t_p$):} Tempo até o primeiro pico da resposta. \\
+    $t_p = \frac{\pi}{w_d}$ \\
+    \textbf{Sobressinal máximo ($M_p$):} Excesso em relação ao valor final (em porcentagem). \\
+    $M_p = \frac{y_{\max} - y_f}{y_f}\cdot 100 = e^{-\frac{\xi}{\sqrt{1-\xi^2}} \cdot \pi}$ \\
+    \textbf{Tempo de acomodação ($t_s$):} Tempo para permanecer dentro de uma faixa em torno do valor final. Relacionado com a maior constante de tempo.
+    \begin{center}
+      \begin{tabular}{c|c|c|c}
+        \textbf{Tolerância} & 0,05           & 0,02           & 0,0067         \\ \hline
+        \textbf{$t_s$}      & $3 \cdot \tau$ & $4 \cdot \tau$ & $5 \cdot \tau$
+      \end{tabular}
+    \end{center}
+    Sendo: $\tau = \frac{1}{\xi w_n}$
+    \column{0.5\textwidth}
+    \includegraphics[width=\textwidth]{identificação-segunda-ordem-novo.png}
+  \end{columns}
+\end{frame}

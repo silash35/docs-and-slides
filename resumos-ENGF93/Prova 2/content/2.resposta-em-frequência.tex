@@ -1,0 +1,89 @@
+\section{Resposta em Frequência}
+
+\begin{frame}{Série e Transformada de Fourier}
+  \scriptsize
+  \begin{columns}
+    \column{0.55\textwidth}
+    \textbf{Série de Fourier}
+    Sinais periódicos podem ser escritos como soma de senoides:
+    $$x(t)=a_0+\sum_{n=1}^{\infty}A_n\sin(n\omega_0t+\phi_n)$$
+
+    \textbf{Transformada de Fourier}
+    Generaliza a Série de Fourier para sinais não periódicos:
+    $$X(\omega)=\int_{-\infty}^{\infty}x(t)e^{-j\omega t}dt$$
+    Ela mostra quanto de cada frequência existe no sinal.
+
+    Domínio da frequência $X(\omega)$:
+    \begin{itemize}
+      \item Quais frequências estão presentes
+      \item Amplitude de cada frequência
+    \end{itemize}
+    A Transformada de Fourier é normalmente aplicada a sinais amostrados, exigindo uma frequência de amostragem superior ao dobro da maior frequência presente no sinal ($f_s>2f_{\max}$).
+    \column{0.45\textwidth}
+    \\ \includegraphics[width=0.8\textwidth]{fft.png}
+  \end{columns}
+  \vspace{2mm}
+\end{frame}
+
+\begin{frame}{Função de Transferência Senoidal}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.33\textwidth}
+
+    Considere uma entrada senoidal:
+    $$u(t)=A\sin(\omega t)$$
+    A resposta completa do sistema possui:
+    $$y(t)=y_t(t)+y_{ss}(t)$$
+    onde:
+    \begin{itemize}
+      \item $y_t(t)$: resposta transitória
+      \item $y_{ss}(t)$: resposta em regime permanente
+    \end{itemize}
+    Após o transitório desaparecer, resta apenas a resposta causada pela entrada.
+
+    \column{0.33\textwidth}
+    \begin{block}{Propriedade Fundamental}
+      Para qualquer sistema linear invariante no tempo (LTI), uma senoide na entrada produz uma senoide na saída com a mesma frequência:
+      $$u(t)=A\sin(\omega t)$$
+      $$y_{ss}(t)=A|G(j\omega)|\sin(\omega t+\phi)$$
+      A frequência não muda. O sistema apenas altera a amplitude e a fase.
+    \end{block}
+    \column{0.33\textwidth}
+    \begin{block}{Função de Transferência Senoidal}
+      A resposta em frequência é obtida avaliando:
+      $$G(j\omega)$$
+      Ela descreve diretamente como cada frequência é amplificada e defasada pelo sistema.
+    \end{block}
+    \begin{block}{Obtendo Ganho e Fase de $G(j\omega)$}
+      Se $G(j\omega)=a+jb$ \\
+      Forma polar: $G(j\omega)=|G(j\omega)|e^{j\phi}$ \\
+      onde:
+      \begin{align*}
+        |G(j\omega)| & =\sqrt{a^2+b^2},                 \\
+        \phi         & =\arctan\left(\frac{b}{a}\right)
+      \end{align*}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Identificação pelo gráfico}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    Seja $u(t)=A_u\sin(\omega t)$ e $y_{ss}(t)=A_y\sin(\omega t+\phi)$
+    \begin{block}{Período}
+      \begin{equation*}
+        T=\frac{2\pi}{\omega}, \qquad f=\frac{1}{T}
+      \end{equation*}
+    \end{block}
+    \begin{block}{Defasagem Temporal}
+      $$\Delta t=t_u-t_y,\qquad \Delta t=\frac{\phi}{\omega}$$
+      $$\phi[\text{rad}],\qquad \phi[^\circ]=\phi[\text{rad}]\frac{180}{\pi}$$
+    \end{block}
+    \begin{block}{Ganho em Amplitude}
+      $$A_y=|G(j\omega)|A_u,\qquad |G(j\omega)|=\frac{A_y}{A_u}$$
+    \end{block}
+    \column{0.5\textwidth}
+    \\ \includegraphics[width=1\textwidth]{identificacao_frequencia.png}
+  \end{columns}
+\end{frame}

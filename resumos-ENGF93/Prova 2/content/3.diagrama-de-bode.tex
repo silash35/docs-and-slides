@@ -1,0 +1,229 @@
+\section{Diagrama de Bode}
+
+\begin{frame}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Diagrama de Bode}
+      O Diagrama de Bode representa a resposta em frequência de um sistema por meio de dois gráficos:
+      \begin{itemize}
+        \item Ganho: $20\log_{10}|G(j\omega)|\;[\text{dB}]$
+        \item Fase: $\angle G(j\omega)\;[^\circ]\;\text{ou}\;[\text{rad}]$
+      \end{itemize}
+      A frequência angular $\omega$ é representada em escala logarítmica. Cada intervalo de $10^n\rightarrow10^{n+1}$ é chamado de \textbf{década}. \\
+      O gráfico de ganho mostra a amplificação de cada frequência e o gráfico de fase mostra o atraso ou adiantamento introduzido pelo sistema.
+    \end{block}
+    \begin{block}{Blocos Fundamentais}
+      \centering
+      \small
+      \begin{tabular}{c|c|c}
+        $G(s)$               & Ganho (dB) & Fase \\
+        \hline
+        $K$                  &
+        $20\log_{10}|K|$     &
+        $0^\circ$                                \\
+        $\dfrac{1}{s}$       &
+        $-20\log_{10}\omega$ &
+        $-90^\circ$                              \\
+        $s$                  &
+        $20\log_{10}\omega$  &
+        $+90^\circ$
+      \end{tabular}
+    \end{block}
+    \column{0.5\textwidth}
+    \\ \includegraphics[width=1\textwidth]{bode_basicos.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Fator de Primeira Ordem}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Frequência de Canto ($\omega_c$)}
+      $$G(j\omega)=(1+j\omega\tau)^{\pm1}, \qquad \omega_c=\frac{1}{\tau}$$
+      Em $\omega=\omega_c$: \\
+      $|1+j\omega_c\tau|=\sqrt2, \qquad \left|\frac1{1+j\omega_c\tau}\right|=\frac1{\sqrt2}$
+    \end{block}
+    \begin{block}{Efeito no Diagrama de Bode após $\omega_c$}
+      \begin{tabular}{c|c|c}
+        Termo                    & Magnitude & Fase \\
+        \hline
+        $(1+j\omega\tau)$        &
+        $+20$ dB/década          &
+        $0^\circ\rightarrow90^\circ$                \\
+        $\dfrac1{1+j\omega\tau}$ &
+        $-20$ dB/década          &
+        $0^\circ\rightarrow-90^\circ$
+      \end{tabular}
+      \vspace{0.3cm} \\
+      As inclinações indicadas são aproximações assintóticas válidas para $\omega\gg\omega_c$. Para $\omega\ll\omega_c$, a magnitude é aproximadamente constante ($0$ dB/década) e fase $\approx0^\circ$.
+    \end{block}
+    \textbf{Dica:} Em $\omega=\omega_c$, a fase está exatamente na metade da transição: $+45^\circ$ para um zero e $-45^\circ$ para um polo.
+    \column{0.5\textwidth}
+    \\ \includegraphics[width=1\textwidth]{bode_ordem_1.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Fator de Segunda Ordem no Denominador}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{equation*}
+      G(s)=\frac{1}{\left(\frac{s}{\omega_n}\right)^2+2\xi\left(\frac{s}{\omega_n}\right)+1}
+    \end{equation*}
+    \begin{itemize}
+      \item $\xi\ge1$:
+            raízes reais. O fator pode ser decomposto em dois fatores de 1ª ordem. Após cada frequência de canto soma-se $-20$ dB/década e $-90^\circ$.
+      \item $0<\xi<1$:
+            raízes complexas conjugadas. Após $\omega_n$ a magnitude decai aproximadamente $-40$ dB/década e a fase tende a $-180^\circ$.
+            \textbf{$\omega_n$ é a frequência de canto do fator de segunda ordem.}
+    \end{itemize}
+    \textbf{Dica:} Em $\omega=\omega_n$, a fase vale $-90^\circ$ para qualquer valor de $\xi$.
+    \begin{block}{Ressonância}
+      Pode ocorrer apenas para: $0<\xi<\frac1{\sqrt2}\approx0.707$ \\
+      \vspace{0.2cm}
+      Frequência de ressonância: $\omega_r=\omega_n\sqrt{1-2\xi^2}$ \\
+      \vspace{0.2cm}
+      Quanto menor $\xi$, maior o pico de ressonância.
+    \end{block}
+    \column{0.5\textwidth}
+    \\ \includegraphics[width=1\textwidth]{bode_ordem_2_denominador.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Fator de Segunda Ordem no Numerador}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{equation*}
+      G(s)=\left(\frac{s}{\omega_n}\right)^2+2\xi\left(\frac{s}{\omega_n}\right)+1
+    \end{equation*}
+    \begin{itemize}
+      \item $\xi\ge1$:
+            raízes reais. O fator pode ser decomposto em dois fatores de 1ª ordem. Após cada frequência de canto soma-se $+20$ dB/década e $+90^\circ$.
+      \item $0<\xi<1$:
+            raízes complexas conjugadas. Após $\omega_n$ a magnitude cresce aproximadamente $+40$ dB/década e a fase tende a $+180^\circ$.
+            \textbf{$\omega_n$ é a frequência de canto do fator de segunda ordem.}
+    \end{itemize}
+    \textbf{Dica:} Em $\omega=\omega_n$, a fase vale $90^\circ$ para qualquer valor de $\xi$.
+    \begin{block}{Anti-Ressonância}
+      Para $0<\xi<\frac1{\sqrt2}$ pode ocorrer uma transição mais acentuada próxima de $\omega_n$. \\
+      \vspace{0.2cm}
+      Diferentemente do caso no denominador, não há pico de ganho, mas sim uma rápida elevação da magnitude. \\
+      \vspace{0.2cm}
+      Quanto menor $\xi$, mais abrupta é a transição.
+    \end{block}
+    \column{0.5\textwidth}
+    \\ \includegraphics[width=1\textwidth]{bode_ordem_2_numerador.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Fase Mínima}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    Um sistema é dito de \textbf{fase mínima} quando todos os seus polos e zeros estão no semiplano esquerdo (\(\Re\{s\}<0\)).
+    \begin{block}{Exemplos de Primeira Ordem}
+      \begin{tabular}{c|c|c}
+        Sistema          & Localização  & Tipo        \\
+        \hline
+        $1+s$            & zero em $-1$ & fase mínima \\
+        $\dfrac{1}{1+s}$ & polo em $-1$ & fase mínima \\
+        $1-s$            & zero em $+1$ & não mínima  \\
+        $\dfrac{1}{1-s}$ & polo em $+1$ & instável
+      \end{tabular}
+    \end{block}
+    Um zero em $s=-a$ e um zero em $s=+a$ produzem a mesma magnitude, pois \\
+    $|1+j\omega/a| = |1-j\omega/a|.$
+    Entretanto, suas fases são opostas: \\
+    $\angle(1+j\omega/a) = +\arctan(\omega/a)$ \\
+    $\angle(1-j\omega/a) = -\arctan(\omega/a).$ \\
+    Assim, um zero no semiplano esquerdo adiciona fase, enquanto um zero no semiplano direito retira fase.
+    \column{0.5\textwidth}
+    \\ \includegraphics[width=1\textwidth]{bode_fase_minima.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Identificação de Sistemas pelo Diagrama de Bode}
+  \scriptsize
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{Fator de Primeira Ordem}
+      \begin{itemize}
+        \item Identifique a mudança de inclinação da magnitude e trace as assíntotas antes e depois da transição. A interseção das assíntotas fornece: $\omega_c=\frac{1}{\tau}$
+        \item Outra forma é observar que o valor da fase vale $\pm45^\circ$ em $\omega=\omega_c$.
+      \end{itemize}
+    \end{block}
+    \begin{block}{Fator de Segunda Ordem}
+      \begin{itemize}
+        \item Em $\omega=\omega_n$ o valor da fase vale $\pm90^\circ$.
+        \item A mudança de inclinação da magnitude indica $\omega_n$.
+        \item Se existir ressonância: $\omega_r=\omega_n\sqrt{1-2\xi^2}$
+      \end{itemize}
+    \end{block}
+    {\color{red}\textbf{CUIDADO:}}
+    Considere o efeito dos demais fatores da função de transferência. Por exemplo, um ganho constante desloca toda a curva de magnitude e deve ser descontado antes da identificação. Da mesma forma, outros polos e zeros podem alterar a inclinação e mascarar frequências de canto.
+    \column{0.5\textwidth}
+    \begin{block}{Estimativa do Amortecimento}
+      Para $0<\xi<0.707$, ocorre pico de ressonância:
+      $$M_r=\frac{1}{2\xi\sqrt{1-\xi^2}}\;\approx\;\frac{1}{2\xi}$$
+      onde $M_r$ é o ganho máximo em escala linear. Use a aproximação para amortecimentos pequenos (e na prova).
+      \vspace{0.2cm} \\
+      Se o pico for medido em dB:
+      $$M_r=10^{M_{r,dB}/20}$$
+      \vspace{-0.2cm}
+      e então calcula-se $\xi$ pela expressão acima.
+      \vspace{0.3cm} \\
+      \textbf{Regra prática}
+      \begin{itemize}
+        \item Pico alto $\Rightarrow$ $\xi$ pequeno.
+        \item Sem pico visível $\Rightarrow$ $\xi \gtrsim 0.7$.
+        \item Inclinação final: $-40\;\text{dB/década}$ indica um polo de segunda ordem.
+      \end{itemize}
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Resumo dos Fatores para Bode}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.33\textwidth}
+    \textbf{1ª Ordem}
+    \vspace{1mm} \\
+    \textbf{Zero}
+    $$G(s)=1+s\tau$$
+    $$|G(j\omega)|=\sqrt{1+(\omega\tau)^2}$$
+    $$\phi=\arctan(\omega\tau)$$
+    \vspace{1mm}
+    \textbf{Polo}
+    $$G(s)=\frac1{1+s\tau}$$
+    $$|G(j\omega)|=\frac1{\sqrt{1+(\omega\tau)^2}}$$
+    $$\phi=-\arctan(\omega\tau)$$
+    $$\omega_c=\frac1\tau$$
+    \column{0.33\textwidth}
+    \textbf{2ª Ordem ($\xi\ge1$)}
+    \vspace{1mm}\\
+    \textbf{Zero}
+    $$G(s)=\left(\frac{s}{\omega_n}\right)^2+2\xi\frac{s}{\omega_n}+1$$
+    $$\omega_{c1}=\omega_n(\xi-\sqrt{\xi^2-1})$$
+    $$\omega_{c2}=\omega_n(\xi+\sqrt{\xi^2-1})$$
+    \vspace{1mm}
+    \textbf{Polo}
+    $$G(s)=\frac1{\left(\frac{s}{\omega_n}\right)^2+2\xi\frac{s}{\omega_n}+1}$$
+    $$\omega_{c1}=\omega_n(\xi-\sqrt{\xi^2-1})$$
+    $$\omega_{c2}=\omega_n(\xi+\sqrt{\xi^2-1})$$
+    \column{0.33\textwidth}
+    \textbf{2ª Ordem ($0<\xi<1$)}
+    \vspace{1mm}\\
+    \textbf{Zero}\\
+    $G(s)=\left(\frac{s}{\omega_n}\right)^2+2\xi\frac{s}{\omega_n}+1$\\
+    $|G(j\omega)|=\sqrt{\left(1-\left(\frac{\omega}{\omega_n}\right)^2\right)^2+\left(2\xi\frac{\omega}{\omega_n}\right)^2}$\\
+    $\phi=\arctan\!\left(\frac{2\xi\frac{\omega}{\omega_n}}{1-\left(\frac{\omega}{\omega_n}\right)^2}\right)$
+    \vspace{1mm}\\
+    \textbf{Polo} \\
+    $G(s)=\frac1{\left(\frac{s}{\omega_n}\right)^2+2\xi\frac{s}{\omega_n}+1}$\\
+    $|G(j\omega)|=\frac1{\sqrt{\left(1-\left(\frac{\omega}{\omega_n}\right)^2\right)^2+\left(2\xi\frac{\omega}{\omega_n}\right)^2}}$\\
+    $\phi=-\arctan\!\left(\frac{2\xi\frac{\omega}{\omega_n}}{1-\left(\frac{\omega}{\omega_n}\right)^2}\right)$ \\
+    $\omega_c=\omega_n$
+  \end{columns}
+\end{frame}

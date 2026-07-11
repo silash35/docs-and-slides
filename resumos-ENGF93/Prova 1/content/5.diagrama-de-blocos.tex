@@ -1,0 +1,115 @@
+\section{Diagrama de Blocos e Controle}
+
+\begin{frame}{Exemplo: Sistema Maglev}
+  \begin{columns}
+    \column{0.4\textwidth}
+    \textbf{Modelo não linear:}
+    \begin{align*}
+      \frac{dx}{dt} & = v                  \\
+      \frac{dv}{dt} & = -1.5 \cdot v - g +
+      \underbrace{\frac{L_0 \cdot x_0}{2 \cdot m}}_{\theta} \cdot \frac{I^2}{x^2}
+    \end{align*}
+    \column{0.6\textwidth}
+    \textbf{Linearização em torno do ponto de operação} $(x_{ss}, I_{ss})$:
+    \begin{align*}
+      \frac{d\bar{x}}{dt} & = \bar{v}                                                                 \\
+      \frac{d\bar{v}}{dt} & =\alpha_1 \cdot \bar{x} + \alpha_2 \cdot \bar{v} + \alpha_3 \cdot \bar{I}
+    \end{align*}
+  \end{columns}
+  \textbf{Coeficientes:}
+  \begin{align*}
+    \alpha_1 & =
+    \left.\frac{\partial}{\partial x} \left( \theta \cdot \frac{I^2}{x^2} \right)\right|_{ss}
+    = -2 \cdot \theta \cdot \frac{I_{ss}^2}{x_{ss}^3} \\
+    \alpha_2 & = -1.5                                 \\
+    \alpha_3 & =
+    \left.\frac{\partial}{\partial I} \left( \theta \cdot \frac{I^2}{x^2} \right)\right|_{ss}
+    = 2 \cdot \theta \cdot \frac{I_{ss}}{x_{ss}^2}
+  \end{align*}
+\end{frame}
+
+\begin{frame}{Diagrama de Blocos (Malha Aberta)}
+  \small
+  \begin{columns}
+    \column{0.5\textwidth}
+    \textbf{Aplicando Transformada de Laplace (condições iniciais nulas):}
+    \begin{align*}
+      s \cdot \bar{X}(s) & = \bar{V}(s)                                                                        \\
+      s \cdot \bar{V}(s) & = \alpha_1 \cdot \bar{X}(s) + \alpha_2 \cdot \bar{V}(s) + \alpha_3 \cdot \bar{I}(s)
+    \end{align*}
+    \vspace{0.4cm}
+    \textbf{pseudo-funções de transferência:} \\
+    \begin{align*}
+      \bar{X}(s) & = \frac{1}{s} \cdot \bar{V}(s)                                                                    \\
+      \bar{V}(s) & = \frac{\alpha_1}{s - \alpha_2} \cdot \bar{X}(s) + \frac{\alpha_3}{s - \alpha_2} \cdot \bar{I}(s)
+    \end{align*}
+    \column{0.5\textwidth}
+    \includegraphics[width=1\textwidth]{blocos_malha_aberta.png}
+    \centering{
+      Diagrama de blocos em malha aberta
+    }
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Diagrama de Blocos (Malha Fechada)}
+  \small
+  \begin{columns}
+    \column{0.5\textwidth}
+    \textbf{Função de transferência do sistema:}
+    \begin{equation*}
+      G(s) = \frac{\bar{X}(s)}{\bar{I}(s)} = \frac{\alpha_3}{s^2 - \alpha_2\,s - \alpha_1}
+    \end{equation*}
+    \begin{block}{Estrutura do Controlador}
+      \textbf{Erro de controle:}
+      \begin{equation*}
+        e(t) = x_{\text{sp}}(t) - x(t) \implies \bar{E}(s) = \bar{X}_{\text{sp}}(s) - \bar{X}(s)
+      \end{equation*}
+      \vspace{0.3em}
+      O controlador gera a corrente $\bar{I}(s)$ a partir de dois ramos em paralelo:
+      \begin{equation*}
+        \bar{I}(s) = K_I\,\bar{E}(s) + \frac{1}{\tau_I s+1}\,\bar{E}(s)
+      \end{equation*}
+    \end{block}
+    \column{0.5\textwidth}
+    \includegraphics[width=1\textwidth]{blocos_malha_fechada.png}
+    \centering{
+      Diagrama de blocos em malha fechada
+    }
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \small
+  Portanto, a função de transferência do controlador é:
+
+  \begin{equation*}
+    C(s) = \frac{\bar{I}(s)}{\bar{E}(s)}
+    = K_I + \frac{1}{\tau_I s+1}
+    = \frac{K_I\tau_I\,s + (K_I+1)}{\tau_I s + 1}
+  \end{equation*}
+
+  A função de malha fechada é:
+
+  \begin{equation*}
+    \frac{\bar{X}(s)}{\bar{X}_{\text{sp}}(s)}
+    = \frac{C(s)\,G(s)}{1+C(s)\,G(s)}
+  \end{equation*}
+
+  Substituindo $C(s)$ e $G(s)$:
+
+  \begin{equation*}
+    \frac{\bar{X}(s)}{\bar{X}_{\text{sp}}(s)}
+    = \frac{\alpha_3\bigl[K_I\tau_I s + (K_I+1)\bigr]}
+    {(\tau_I s+1)(s^2 - \alpha_2\,s - \alpha_1)
+      + \alpha_3\bigl[K_I\tau_I s + (K_I+1)\bigr]}
+  \end{equation*}
+
+  Expandindo o denominador:
+
+  \begin{equation*}
+    d(s) = \tau_I s^3
+    + (1 - \alpha_2\tau_I)\,s^2
+    + (-\alpha_1\tau_I - \alpha_2 + \alpha_3 K_I\tau_I)\,s
+    + (-\alpha_1 + \alpha_3(K_I+1))
+  \end{equation*}
+\end{frame}

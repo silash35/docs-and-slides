@@ -1,0 +1,209 @@
+\section{Modelos em tempo discreto}
+
+\begin{frame}
+  \scriptsize
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{Aproximações por Diferenças Finitas}
+      Derivada de primeira ordem:
+      $$\left.\frac{dy}{dt}\right|_k \approx \frac{y(k)-y(k-1)}{T_s}$$
+      Derivada de segunda ordem:
+      $$\left.\frac{d^2y}{dt^2}\right|_k \approx \frac{y(k)-2y(k-1)+y(k-2)}{T_s^2}$$
+    \end{block}
+    \begin{block}{Notação Operacional}
+      Operador avanço:
+
+      $$Ef(k)=f(k+1)$$
+
+      $$E^2f(k)=f(k+2)$$
+
+      $$E^{-1}f(k)=f(k-1).$$
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Convolução}
+      Contínuo:
+      $$y(t)=f(t)*g(t) = \int_0^t f(\tau)g(t-\tau)d\tau$$
+      Discreto:
+      $$y(k)=f(k)*g(k) = \sum_{i=0}^{k}f(i)g(k-i)$$
+      Propriedades: \\
+      $f_1*f_2=f_2*f_1$ \\
+      $f_1*(f_2+f_3)=f_1*f_2+f_1*f_3$ \\
+      $f_1*(f_2*f_3)=(f_1*f_2)*f_3$ \\
+      $f(k)*\delta(k)=f(k)$ \\
+      Se $f_1$ possui $m$ amostras e $f_2$ possui $n$ amostras, então $f_1*f_2$ possui $m+n-1$ amostras.
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Tabela convolução no discreto}
+  \includegraphics[width=1\textwidth]{tabela-convolução.jpg}
+\end{frame}
+
+\begin{frame}{Resposta de Entrada Nula (Método 1)}
+  \scriptsize
+  $$\frac{d^2 y(t)}{dt^2}+34.5\,\frac{d y(t)}{dt}+170\,y(t)=2.8\,\frac{d u(t)}{dt}+5.6\,u(t)$$
+  Para entrada nula: $u(t)=0$.
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Passo 1: Resolver no Contínuo}
+      Equação característica:
+      $$s^2+34.5s+170=0$$
+      Polos (Bhaskara):
+      $$s_1=-5.956,\qquad s_2=-28.544$$
+      Solução:
+      $$y(t)=C_1e^{-5.956t}+C_2e^{-28.544t}$$
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Passo 2: Discretizar os Polos}
+      Cada polo contínuo gera um polo discreto:
+      $$\boxed{z_i=e^{s_iT_s}}$$
+      Logo:
+      $$z_1=e^{-5.956T_s},\qquad z_2=e^{-28.544T_s}$$
+      Solução discreta:
+      $$y(k)=C_1z_1^k+C_2z_2^k$$
+    \end{block}
+  \end{columns}
+
+  \vspace{0.2cm}
+
+  Os coeficientes $C_1$ e $C_2$ são obtidos das condições iniciais.
+
+  \textbf{Estabilidade:} o sistema discreto é estável se todos os polos satisfazem $|r_i|<1$, ou seja, devem estar dentro do círculo unitário no plano $z$.
+\end{frame}
+
+\begin{frame}{Resposta de Entrada Nula (Método 2)}
+  \scriptsize
+  $$\frac{d^2 y(t)}{dt^2}+34.5\,\frac{d y(t)}{dt}+170\,y(t)=2.8\,\frac{d u(t)}{dt}+5.6\,u(t)$$
+  Para entrada nula: $u(t)=0$.
+  \begin{columns}[t]
+    \column{0.6\textwidth}
+    \begin{block}{Passo 1: Discretizar ($T_s=0.1$ s)}
+      Aplicando diferenças finitas:
+      $$100(y(k)-2y(k-1)+y(k-2)) + 345(y(k)-y(k-1)) + 170y(k) = 0$$
+      Escrevendo em avanço ($k\rightarrow k+2$):
+      $$615y(k+2)-545y(k+1)+100y(k)=0$$
+      Reorganizando e obtendo a equação recursiva (opcional):
+      $$y(k+1)=0.886\,y(k)-0.163\,y(k-1)$$
+    \end{block}
+    \column{0.4\textwidth}
+    \begin{block}{Passo 2: Resolver a Recorrência}
+      Da solução recursiva (não precisa reorganizar):
+      $$y(k+2)-0.886y(k-1)+0.163y(k-2)=0$$
+      Equação característica:
+      $$E^2 - 0.886E + 0.163 = 0$$
+      Raízes: $\gamma_1=0.627,\qquad \gamma_2=0.259$ \\
+      Solução fechada:
+      $$y(k)=C_1(0.627)^k+C_2(0.259)^k$$
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Resposta de Estado Nulo (Ideia)}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{alertblock}{Notação}
+      $u(k)$: entrada genérica do sistema.\\
+      $u_k$: degrau unitário discreto ($u_k=0$ para $k<0$ e $u_k=1$ para $k\geq 0$).\\
+      Mantém-se a notação $u_k$ para evidenciar a causalidade.
+    \end{alertblock}
+    Uma entrada discreta pode ser escrita como soma de impulsos:
+    $$u(k)=\sum_{m=0}^{k} A_m\,\delta(k-m)$$
+    onde $A_m$ são os valores da sequência (amostras do sinal): $A_m = u(m)$.
+    \column{0.5\textwidth}
+    \begin{block}{Resposta de Estado Nulo}
+      Em sistemas lineares invariantes no tempo (LTI), a resposta ao estado nulo é definida como:
+      $$y(k)=u(k)*h(k)$$
+      onde $h(k)$ é a \textbf{resposta ao impulso}.
+    \end{block}
+    \begin{block}{Ideia principal}
+      Primeiro calcula-se $h(k)$ (resposta ao impulso do sistema). \\
+      Depois a saída é obtida por convolução com a entrada. \\
+      No final, a resposta total é dada por:
+      $$y(k)=y_{\text{Entrada Nula}}(k)+y_{\text{Estado Nulo}}(k)$$
+    \end{block}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Resposta de Estado Nulo (Exemplo)}
+  \scriptsize
+  $$\frac{d^2 y(t)}{dt^2}+34.5\,\frac{d y(t)}{dt}+170\,y(t)=2.8\,\frac{d u(t)}{dt}+5.6\,u(t)$$
+  \begin{columns}[t]
+    \column{0.6\textwidth}
+    \begin{block}{Discretização — lado esquerdo ($T_s=0.1$ s)}
+      $$\frac{y(k)-2y(k-1)+y(k-2)}{0.01}+\frac{34.5\bigl(y(k)-y(k-1)\bigr)}{0.1}+170\,y(k)$$
+      $$=615\,y(k)-545\,y(k-1)+100\,y(k-2)$$
+    \end{block}
+    \column{0.4\textwidth}
+    \begin{block}{Discretização — lado direito}
+      $$\frac{2.8\bigl(u(k)-u(k-1)\bigr)}{0.1}+5.6\,u(k)$$
+      $$=33.6\,u(k)-28\,u(k-1)$$
+    \end{block}
+  \end{columns}
+  \begin{block}{Equação recursiva completa}
+    $$615\,y(k)-545\,y(k-1)+100\,y(k-2)=33.6\,u(k)-28\,u(k-1)$$
+    $$\boxed{y(k)=0.886\,y(k-1)-0.163\,y(k-2)+0.0595\,u(k)-0.0455\,u(k-1)}$$
+    Para estado nulo: $y(k)=u(k)*h(k)$, é necessário calcular $h(k)$.
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \scriptsize
+  \begin{columns}[t]
+    \column{0.48\textwidth}
+    \begin{block}{Resposta recursiva ao impulso}
+      Aplicar $u(k)=\delta(k)$ com C.I. nulas na equação recursiva:
+      \begin{align*}
+        h(0) & =0.0595\underbrace{\delta(0)}_{1}-0.0455\underbrace{\delta(-1)}_{0}=0.0595 \\
+        h(1) & =0.886\,(0.0595)-0.0455\delta(0)=0.0072                                    \\
+        h(k) & =0.886\,h(k-1)-0.163\,h(k-2),\quad k\geq 2
+      \end{align*}
+    \end{block}
+    \begin{block}{Forma fechada assumida}
+      $$h(k)=\frac{b_0}{a_0}\,\delta(k)+\Bigl(C_1\gamma_1^k+C_2\gamma_2^k+\cdots\Bigr)u_k$$
+      $$h(k)=\frac{33.6}{615}\,\delta(k)
+        +\Bigl(C_1(0.627)^k+C_2(0.259)^k\Bigr)u_k$$
+    \end{block}
+    \column{0.52\textwidth}
+    \begin{block}{Sistema para encontrar $C_1$ e $C_2$}
+      Igualando a forma fechada à resposta recursiva:
+      \begin{align*}
+        k=0: & \quad\underbrace{0.0595}_{b_0/a_0}+C_1+C_2=\underbrace{0.0595}_{h(0)} \\[3pt]
+             & \quad\Rightarrow C_1+C_2=0                                            \\[6pt]
+        k=1: & \quad 0.627\,C_1+0.259\,C_2=\underbrace{0.0072}_{h(1)}
+      \end{align*}
+      Resolvendo o sistema linear:
+      $$C_1=0.0194,\qquad C_2=-0.0194$$
+    \end{block}
+  \end{columns}
+  \begin{block}{Resposta ao impulso}
+    $$\boxed{h(k)=0.0595\,\delta(k)+0.0194\,(0.627)^k\,u_k-0.0194\,(0.259)^k\,u_k}$$
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \scriptsize
+  \begin{block}{Resposta de Estado Nulo por convolução}
+    Com $h(k)$ determinada, a saída de estado nulo é:
+    $$y(k)=u(k)*h(k)=\sum_{i=0}^{k}u(i)\,h(k-i)$$
+  \end{block}
+  \begin{columns}[t]
+    \column{0.5\textwidth}
+    \begin{block}{Opção 1: tabela de convolução}
+      Por linearidade, decompor $h(k)$:
+      \begin{align*}
+        y(k)
+         & =\tfrac{b_0}{a_0}\underbrace{u(k)*\delta(k)}_{=\,u(k)} \\
+         & +C_1\bigl[u(k)*(0.627)^k u_k\bigr]                     \\
+         & +C_2\bigl[u(k)*(0.259)^k u_k\bigr]
+      \end{align*}
+      Cada parcela $u(k)*a^k u_k$ é consultada diretamente na tabela.
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{Opção 2: fórmula direta}
+      Calcular amostra a amostra:
+      $$y(k)=\sum_{i=0}^{k}u(i)\,h(k-i)$$
+      Útil quando $u(k)$ tem amostras finitas ou quando a forma não consta na tabela.
+    \end{block}
+  \end{columns}
+\end{frame}
