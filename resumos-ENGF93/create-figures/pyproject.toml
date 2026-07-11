@@ -1,0 +1,9 @@
+[project]
+name = "create-figures"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "control>=0.10.2",
+    "matplotlib>=3.11.0",
+    "numpy>=2.5.1",
+]
