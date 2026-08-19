@@ -1,0 +1,82 @@
+\section{Teoria do Git}
+
+\begin{frame}{O que são commits?}
+  \centering
+  \only<1>{\includegraphics[width=1\linewidth]{git-commit1.png}}
+  \only<2>{\includegraphics[width=1\linewidth]{git-commit2.png}}
+
+  \note{
+    Um commit é um registro de uma alteração no histórico do projeto.
+    Ele representa um estado do projeto naquele momento e guarda informações como quem fez a alteração, quando ela foi feita e uma mensagem descrevendo o que foi alterado.
+    Todo commit também possui um identificador único.
+    Esse identificador permite referenciar exatamente aquele commit no histórico do projeto.
+
+    Tá vendo? Só isso. Bem simples.
+
+    E aí, conforme criamos commits e fazendo branches e merges, essas relações começam a formar uma estrutura de grafo.
+
+    Mais especificamente, o histórico de commits do Git forma um grafo acíclico direcionado: cada commit aponta para um ou mais commits anteriores.
+
+    Quem achou que não ia utilizar estrutura de dados para nada?
+  }
+\end{frame}
+
+\begin{frame}{O que são branches?}
+  \centering
+  \only<1>{\includegraphics[width=1\linewidth]{git-branches.png}}
+  \only<2>{\includegraphics[width=1\linewidth]{git-merge.png}}
+
+  \note{
+    Uma branch é uma linha independente de desenvolvimento no histórico do Git.
+
+    Imagine que estamos trabalhando na versão principal do projeto e precisamos desenvolver uma funcionalidade nova.
+    Em vez de alterar diretamente a versão principal, criamos uma branch e trabalhamos nela separadamente.
+
+    Enquanto isso, a versão principal pode continuar recebendo outras alterações.
+    Quando terminamos a funcionalidade, podemos juntar ambas as linhas novamente mediante um merge.
+
+    O merge registra essa integração criando um novo commit que possui como ancestrais as duas linhas unidas.
+
+    Curiosidade: uma branch é apenas um ponteiro para um commit.
+    Conforme novos commits são criados, esse ponteiro avança para acompanhar o histórico daquela linha de desenvolvimento.
+  }
+\end{frame}
+
+\begin{frame}{O que são tags?}
+  \centering
+  \includegraphics[width=1\linewidth]{git-tags.png}
+
+  \note{
+    Uma tag é um nome dado a um ponto específico do histórico.
+    Ela é usada principalmente para marcar versões importantes do projeto, como uma versão de lançamento. Diferentemente de uma branch, uma tag não representa uma linha de desenvolvimento.
+  }
+\end{frame}
+
+\begin{frame}{O fluxo de trabalho do Git}
+  \centering
+  \includegraphics[width=1\linewidth]{git-workflow.jpg}
+
+  \note{
+    Vamos imaginar que estamos trabalhando em um projeto.
+
+    Primeiro, estamos simplesmente editando os arquivos.
+    Esse é o Working Directory: o estado atual dos arquivos no nosso computador.
+
+    Agora fizemos três alterações: corrigimos um erro, adicionamos uma funcionalidade e também alteramos a documentação.
+    Mas talvez não queiramos registrar as três coisas juntas no mesmo commit.
+    Queremos fazer um commit apenas com a correção do erro.
+
+    É aí que entra a Staging Area.
+    Ela funciona como uma área de preparação: colocamos nela exatamente as alterações que queremos incluir no próximo commit.
+
+    Quando fazemos o commit, essas alterações passam a fazer parte do histórico do nosso Local Repository.
+    Esse histórico fica no nosso computador e podemos consultá-lo sem precisar de internet.
+
+    Depois, quando quisermos compartilhar esses commits, enviamos nosso histórico para um Remote Repository.
+    Esse tal de Remote Repository pode ser o GitHub, o GitLab ou qualquer outra plataforma que você estiver usando.
+
+    Mas ele nem precisa estar na internet.
+    Pode ser simplesmente outro repositório em outra máquina ou até outra pasta no seu próprio computador.
+    O Git não sabe nem se importa se existe um GitHub por trás disso.
+  }
+\end{frame}

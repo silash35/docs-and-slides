@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="mermaid-1786769813787-xtnnfmvbf"
+   width="284.50354"
+   viewBox="-95.699997 -19 284.50354 133.26356"
+   role="graphics-document document"
+   aria-roledescription="gitGraph"
+   version="1.1"
+   sodipodi:docname="git-branches.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   height="133.26357"
+   inkscape:export-filename="./git-tags.png"
+   inkscape:export-xdpi="384.73001"
+   inkscape:export-ydpi="384.73001"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs29">
+    <marker
+       style="overflow:visible"
+       id="Triangle-9"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="0.69999999"
+       markerHeight="0.69999999"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135-3" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Triangle-9-0"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Triangle arrow"
+       markerWidth="0.69999999"
+       markerHeight="0.69999999"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.5)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path135-3-6" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="namedview29"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.389244"
+     inkscape:cx="123.88856"
+     inkscape:cy="66.129706"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="mermaid-1786769813787-xtnnfmvbf" />
+  <style
+     id="style1">#mermaid-1786769813787-xtnnfmvbf{font-family:Inter,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;font-size:16px;fill:#1a1a1a;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaid-1786769813787-xtnnfmvbf .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaid-1786769813787-xtnnfmvbf .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaid-1786769813787-xtnnfmvbf .error-icon{fill:#552222;}#mermaid-1786769813787-xtnnfmvbf .error-text{fill:#552222;stroke:#552222;}#mermaid-1786769813787-xtnnfmvbf .edge-thickness-normal{stroke-width:1px;}#mermaid-1786769813787-xtnnfmvbf .edge-thickness-thick{stroke-width:3.5px;}#mermaid-1786769813787-xtnnfmvbf .edge-pattern-solid{stroke-dasharray:0;}#mermaid-1786769813787-xtnnfmvbf .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaid-1786769813787-xtnnfmvbf .edge-pattern-dashed{stroke-dasharray:3;}#mermaid-1786769813787-xtnnfmvbf .edge-pattern-dotted{stroke-dasharray:2;}#mermaid-1786769813787-xtnnfmvbf .marker{fill:#4a4a4a;stroke:#4a4a4a;}#mermaid-1786769813787-xtnnfmvbf .marker.cross{stroke:#4a4a4a;}#mermaid-1786769813787-xtnnfmvbf svg{font-family:Inter,&quot;Segoe UI&quot;,Roboto,&quot;Helvetica Neue&quot;,Arial,sans-serif;font-size:16px;}#mermaid-1786769813787-xtnnfmvbf p{margin:0;}#mermaid-1786769813787-xtnnfmvbf .commit-id,#mermaid-1786769813787-xtnnfmvbf .commit-msg,#mermaid-1786769813787-xtnnfmvbf .branch-label{fill:lightgrey;color:lightgrey;font-family:'trebuchet ms',verdana,arial,sans-serif;font-family:var(--mermaid-font-family);}#mermaid-1786769813787-xtnnfmvbf .branch-label0{fill:#ffffff;}#mermaid-1786769813787-xtnnfmvbf .commit0{stroke:hsl(240, 100%, 46.2745098039%);fill:hsl(240, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .commit-highlight0{stroke:hsl(60, 100%, 3.7254901961%);fill:hsl(60, 100%, 3.7254901961%);}#mermaid-1786769813787-xtnnfmvbf .label0{fill:hsl(240, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .arrow0{stroke:hsl(240, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .branch-label1{fill:black;}#mermaid-1786769813787-xtnnfmvbf .commit1{stroke:hsl(60, 100%, 43.5294117647%);fill:hsl(60, 100%, 43.5294117647%);}#mermaid-1786769813787-xtnnfmvbf .commit-highlight1{stroke:rgb(0, 0, 160.5);fill:rgb(0, 0, 160.5);}#mermaid-1786769813787-xtnnfmvbf .label1{fill:hsl(60, 100%, 43.5294117647%);}#mermaid-1786769813787-xtnnfmvbf .arrow1{stroke:hsl(60, 100%, 43.5294117647%);}#mermaid-1786769813787-xtnnfmvbf .branch-label2{fill:black;}#mermaid-1786769813787-xtnnfmvbf .commit2{stroke:hsl(80, 100%, 46.2745098039%);fill:hsl(80, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .commit-highlight2{stroke:rgb(48.8333333334, 0, 146.5000000001);fill:rgb(48.8333333334, 0, 146.5000000001);}#mermaid-1786769813787-xtnnfmvbf .label2{fill:hsl(80, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .arrow2{stroke:hsl(80, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .branch-label3{fill:#ffffff;}#mermaid-1786769813787-xtnnfmvbf .commit3{stroke:hsl(210, 100%, 46.2745098039%);fill:hsl(210, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .commit-highlight3{stroke:rgb(146.5000000001, 73.2500000001, 0);fill:rgb(146.5000000001, 73.2500000001, 0);}#mermaid-1786769813787-xtnnfmvbf .label3{fill:hsl(210, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .arrow3{stroke:hsl(210, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .branch-label4{fill:black;}#mermaid-1786769813787-xtnnfmvbf .commit4{stroke:hsl(180, 100%, 46.2745098039%);fill:hsl(180, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .commit-highlight4{stroke:rgb(146.5000000001, 0, 0);fill:rgb(146.5000000001, 0, 0);}#mermaid-1786769813787-xtnnfmvbf .label4{fill:hsl(180, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .arrow4{stroke:hsl(180, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .branch-label5{fill:black;}#mermaid-1786769813787-xtnnfmvbf .commit5{stroke:hsl(150, 100%, 46.2745098039%);fill:hsl(150, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .commit-highlight5{stroke:rgb(146.5000000001, 0, 73.2500000001);fill:rgb(146.5000000001, 0, 73.2500000001);}#mermaid-1786769813787-xtnnfmvbf .label5{fill:hsl(150, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .arrow5{stroke:hsl(150, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .branch-label6{fill:black;}#mermaid-1786769813787-xtnnfmvbf .commit6{stroke:hsl(300, 100%, 46.2745098039%);fill:hsl(300, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .commit-highlight6{stroke:rgb(0, 146.5000000001, 0);fill:rgb(0, 146.5000000001, 0);}#mermaid-1786769813787-xtnnfmvbf .label6{fill:hsl(300, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .arrow6{stroke:hsl(300, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .branch-label7{fill:black;}#mermaid-1786769813787-xtnnfmvbf .commit7{stroke:hsl(0, 100%, 46.2745098039%);fill:hsl(0, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .commit-highlight7{stroke:rgb(0, 146.5000000001, 146.5000000001);fill:rgb(0, 146.5000000001, 146.5000000001);}#mermaid-1786769813787-xtnnfmvbf .label7{fill:hsl(0, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .arrow7{stroke:hsl(0, 100%, 46.2745098039%);}#mermaid-1786769813787-xtnnfmvbf .branch{stroke-width:1;stroke:#4a4a4a;stroke-dasharray:2;}#mermaid-1786769813787-xtnnfmvbf .commit-label{font-size:10px;fill:#000021;}#mermaid-1786769813787-xtnnfmvbf .commit-label-bkg{font-size:10px;fill:#ffffde;opacity:0.5;}#mermaid-1786769813787-xtnnfmvbf .tag-label{font-size:10px;fill:#131300;}#mermaid-1786769813787-xtnnfmvbf .tag-label-bkg{fill:#ECECFF;stroke:#7C7CDB;}#mermaid-1786769813787-xtnnfmvbf .tag-hole{fill:#1a1a1a;}#mermaid-1786769813787-xtnnfmvbf .commit-merge{stroke:#ECECFF;fill:#ECECFF;}#mermaid-1786769813787-xtnnfmvbf .commit-reverse{stroke:#ECECFF;fill:#ECECFF;stroke-width:3;}#mermaid-1786769813787-xtnnfmvbf .commit-highlight-inner{stroke:#ECECFF;fill:#ECECFF;}#mermaid-1786769813787-xtnnfmvbf .arrow{stroke-width:8;stroke-linecap:round;fill:none;}#mermaid-1786769813787-xtnnfmvbf .gitTitleText{text-anchor:middle;font-size:18px;fill:#1a1a1a;}#mermaid-1786769813787-xtnnfmvbf :root{--mermaid-font-family:&quot;trebuchet ms&quot;,verdana,arial,sans-serif;}</style>
+  <path
+     style="fill:none;stroke:#5e5c64;stroke-width:1.80944;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5.42832, 3.61888;stroke-dashoffset:0"
+     d="M -84.25441,4.0610962 H 178.87387"
+     id="path31-20-7"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;stroke:#5e5c64;stroke-width:1.83217;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5.4965, 3.66433;stroke-dashoffset:0"
+     d="M -263.44948,-51.379949 H 6.3302931"
+     id="path31-20"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;stroke:#5e5c64;stroke-width:1.83217;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5.4965, 3.66433;stroke-dashoffset:0"
+     d="M -231.64026,-64.537506 H 38.139518"
+     id="path31-20-3"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;stroke:#62a0ea;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     d="M -84.254407,4.061103 141.859,4.0610962"
+     id="path31-2"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;stroke:#f66151;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     d="M -38.527874,4.061103 6.1912145,71.489243 H 96.636581 L 141.859,4.061093"
+     id="path31-2-2"
+     sodipodi:nodetypes="cccc" />
+  <circle
+     cx="-84.25441"
+     cy="4.0610962"
+     r="10"
+     class="commit v1.0 commit1"
+     id="circle15"
+     style="fill:#62a0ea;stroke:none" />
+  <circle
+     cx="-39.031719"
+     cy="4.0610962"
+     r="10"
+     class="commit v1.0 commit1"
+     id="circle15-2"
+     style="fill:#62a0ea;stroke:none" />
+  <circle
+     cx="6.1909628"
+     cy="4.0610962"
+     r="10"
+     class="commit v1.0 commit1"
+     id="circle15-2-9"
+     style="fill:#62a0ea;stroke:none" />
+  <circle
+     cx="51.413651"
+     cy="4.0610962"
+     r="10"
+     class="commit v1.0 commit1"
+     id="circle15-2-9-0"
+     style="fill:#62a0ea;stroke:none" />
+  <circle
+     cx="6.1912146"
+     cy="71.489243"
+     r="10"
+     class="commit v1.0 commit1"
+     id="circle15-2-1"
+     style="fill:#f66151;stroke:none" />
+  <circle
+     cx="51.413925"
+     cy="71.489243"
+     r="10"
+     class="commit v1.0 commit1"
+     id="circle15-2-9-8"
+     style="fill:#f66151;stroke:none" />
+  <circle
+     cx="96.636581"
+     cy="71.489243"
+     r="10"
+     class="commit v1.0 commit1"
+     id="circle15-2-9-0-7"
+     style="fill:#f66151;stroke:none" />
+  <rect
+     style="fill:#3d3846;stroke-width:0.413886"
+     id="rect29-7"
+     width="22.891178"
+     height="9.0610914"
+     x="130.41342"
+     y="-19"
+     ry="4.5305457"
+     rx="0" />
+  <text
+     xml:space="preserve"
+     style="font-size:6.07695px;writing-mode:lr-tb;direction:ltr;fill:#3584e4;stroke-width:0.37981"
+     x="136.45964"
+     y="-12.40329"
+     id="text29-53"><tspan
+       sodipodi:role="line"
+       id="tspan29-5"
+       x="136.45964"
+       y="-12.40329"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';fill:#ffffff;stroke-width:0.37981">v1.1</tspan></text>
+  <rect
+     style="fill:#3d3846;stroke-width:0.413886"
+     id="rect29-7-4"
+     width="22.891178"
+     height="9.0610914"
+     x="-95.699997"
+     y="-19"
+     ry="4.5305457"
+     rx="0" />
+  <text
+     xml:space="preserve"
+     style="font-size:6.07695px;writing-mode:lr-tb;direction:ltr;fill:#3584e4;stroke-width:0.37981"
+     x="-90.051819"
+     y="-12.357712"
+     id="text29-53-9"><tspan
+       sodipodi:role="line"
+       id="tspan29-5-2"
+       x="-90.051819"
+       y="-12.357712"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';fill:#ffffff;stroke-width:0.37981">v1.0</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:14.6074px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke-width:2.73889;stroke-linecap:square;stroke-linejoin:round;paint-order:markers stroke fill"
+     x="-89.520363"
+     y="9.1225586"
+     id="text2"><tspan
+       sodipodi:role="line"
+       id="tspan2"
+       x="-89.520363"
+       y="9.1225586"
+       style="stroke-width:2.73889">A</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:14.6074px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke-width:2.73889;stroke-linecap:square;stroke-linejoin:round;paint-order:markers stroke fill"
+     x="-44.195442"
+     y="9.1152496"
+     id="text2-5"><tspan
+       sodipodi:role="line"
+       id="tspan2-9"
+       x="-44.195442"
+       y="9.1152496"
+       style="stroke-width:2.73889">B</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:14.6074px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke-width:2.73889;stroke-linecap:square;stroke-linejoin:round;paint-order:markers stroke fill"
+     x="1.2390585"
+     y="9.1371613"
+     id="text2-5-2"><tspan
+       sodipodi:role="line"
+       id="tspan2-9-8"
+       x="1.2390585"
+       y="9.1371613"
+       style="stroke-width:2.73889">C</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:14.6074px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke-width:2.73889;stroke-linecap:square;stroke-linejoin:round;paint-order:markers stroke fill"
+     x="1.4364996"
+     y="76.550697"
+     id="text2-5-2-6"><tspan
+       sodipodi:role="line"
+       id="tspan2-9-8-1"
+       x="1.4364996"
+       y="76.550697"
+       style="stroke-width:2.73889">E</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:14.6074px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke-width:2.73889;stroke-linecap:square;stroke-linejoin:round;paint-order:markers stroke fill"
+     x="46.856415"
+     y="76.550697"
+     id="text2-5-2-5"><tspan
+       sodipodi:role="line"
+       id="tspan2-9-8-4"
+       x="46.856415"
+       y="76.550697"
+       style="stroke-width:2.73889">F</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:14.6074px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke-width:2.73889;stroke-linecap:square;stroke-linejoin:round;paint-order:markers stroke fill"
+     x="91.618942"
+     y="76.572617"
+     id="text2-5-2-65"><tspan
+       sodipodi:role="line"
+       id="tspan2-9-8-6"
+       x="91.618942"
+       y="76.572617"
+       style="stroke-width:2.73889">G</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:14.6074px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke-width:2.73889;stroke-linecap:square;stroke-linejoin:round;paint-order:markers stroke fill"
+     x="45.811707"
+     y="9.1152496"
+     id="text2-5-2-7"><tspan
+       sodipodi:role="line"
+       id="tspan2-9-8-3"
+       x="45.811707"
+       y="9.1152496"
+       style="stroke-width:2.73889">D</tspan></text>
+  <circle
+     cx="141.85901"
+     cy="4.0610962"
+     r="10"
+     class="commit v1.0 commit1"
+     id="circle15-2-9-0-9"
+     style="fill:#62a0ea;stroke:none" />
+  <text
+     xml:space="preserve"
+     style="font-weight:bold;font-size:14.6074px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';writing-mode:lr-tb;direction:ltr;fill:#ffffff;fill-opacity:1;stroke-width:2.73889;stroke-linecap:square;stroke-linejoin:round;paint-order:markers stroke fill"
+     x="136.49808"
+     y="9.1225586"
+     id="text2-5-2-7-5"><tspan
+       sodipodi:role="line"
+       id="tspan2-9-8-3-0"
+       x="136.49808"
+       y="9.1225586"
+       style="stroke-width:2.73889">H</tspan></text>
+  <g
+     id="g29-4"
+     transform="matrix(0.61486138,0,0,0.61486138,146.9939,121.49451)">
+    <rect
+       style="fill:#c01c28;fill-opacity:1;stroke-width:1.23047"
+       id="rect29-5"
+       width="76.843552"
+       height="23.85692"
+       x="-120.32206"
+       y="-35.617214"
+       ry="6.1524425" />
+    <text
+       xml:space="preserve"
+       style="writing-mode:lr-tb;direction:ltr;fill:#3584e4"
+       x="-110.74031"
+       y="-17.592762"
+       id="text29-2"><tspan
+         sodipodi:role="line"
+         id="tspan29-54"
+         x="-110.74031"
+         y="-17.592762"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';fill:#ffffff">feature</tspan></text>
+  </g>
+  <path
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#Triangle-9);paint-order:markers stroke fill"
+     d="M 96.636583,98.59486 V 86.46075"
+     id="path2-7"
+     sodipodi:nodetypes="cc" />
+  <g
+     id="g29-4-9"
+     transform="matrix(0.61486138,0,0,0.61486138,192.21633,54.066357)">
+    <rect
+       style="fill:#3584e4;stroke-width:1.23047"
+       id="rect29-5-2"
+       width="76.843552"
+       height="23.85692"
+       x="-120.32206"
+       y="-35.617214"
+       ry="6.1524425" />
+    <text
+       xml:space="preserve"
+       style="writing-mode:lr-tb;direction:ltr;fill:#3584e4"
+       x="-110.74031"
+       y="-17.592762"
+       id="text29-2-6"><tspan
+         sodipodi:role="line"
+         id="tspan29-54-6"
+         x="-110.74031"
+         y="-17.592762"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold';fill:#ffffff">master</tspan></text>
+  </g>
+  <path
+     style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-dasharray:none;marker-end:url(#Triangle-9-0);paint-order:markers stroke fill"
+     d="m 141.85901,31.166701 v -12.1341"
+     id="path2-7-4"
+     sodipodi:nodetypes="cc" />
+</svg>

@@ -1,0 +1,88 @@
+\section{O Linux e o Git}
+
+\begin{frame}{O problemão: o Kernel Linux}
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+      \item Mais de \textbf{43 milhões de linhas de código}, distribuídas em mais de \textbf{108 mil arquivos}.
+      \item Mais de \textbf{13 mil desenvolvedores}.
+      \item Várias versões do Kernel são mantidas \textbf{simultaneamente}.
+      \item Empresas como \textbf{Google} e \textbf{Canonical (Ubuntu)} mantêm versões do Kernel com suas próprias modificações.
+      \item Alterações precisam transitar entre diferentes versões, empresas e mantenedores, de forma \textbf{descentralizada}.
+      \item Precisamos saber \textbf{quem escreveu cada alteração, o que foi alterado e por quê}.
+    \end{itemize}
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.7\linewidth]{tux.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{O Linux e o Git}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item O Linux utilizava antes a ferramenta \textbf{BitKeeper}. Era de código proprietário, mas disponibilizado gratuitamente aos desenvolvedores do Kernel.
+      \item Em 2005, Andrew Tridgell criou o SourcePuller, uma ferramenta para interagir com repositórios BitKeeper. A BitMover considerou uma violação das condições de uso e encerrou o acesso gratuito para o Linux.
+      \item Linus então decidiu criar o Git.
+    \end{itemize}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.75\linewidth]{git-logo.png}
+    \begin{block}{}
+      Eu sou um desgraçado egocêntrico, então batizo todos os meus projetos com meu nome. Primeiro Linux, agora Git.
+      \\
+      \hspace*\fill{\small--- Linus Torvalds}
+    \end{block}
+    {
+    \vspace{3mm}
+    \small\textit{git}: pessoa cabeça-dura, argumentativa, que acha que sempre tem razão;
+    também pode significar uma pessoa desagradável ou estúpida.
+    }
+  \end{columns}
+\end{frame}
+
+\begin{frame}{E o GitHub?}
+  \begin{columns}
+    \column{0.6\textwidth}
+    \begin{itemize}
+      \item Em \textbf{2008}, nasceu o GitHub, uma plataforma para hospedar repositórios Git e facilitar a colaboração.
+      \item O GitHub é um serviço proprietário.
+      \item Existem alternativas de código aberto, como \textbf{GitLab}, \textbf{Gitea} e \textbf{Forgejo}.
+      \item Ironicamente, em \textbf{2018}, a Microsoft comprou o GitHub por \textbf{US\$ 7,5 bilhões}.
+      \item Linux não utiliza e nunca utilizou o GitHub. O desenvolvimento utiliza seu próprio ecossistema de repositórios Git e \textbf{e-mails}.
+    \end{itemize}
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=1\linewidth]{GitHub-Logo.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+    \begin{block}{Git}
+      \begin{itemize}
+        \item Versionamento
+        \item Histórico de alterações
+        \item Autoria das alterações
+        \item Contexto e motivo das alterações
+        \item Comparar versões
+        \item Mesclar alterações
+        \item Voltar versões
+        \item Trabalho em paralelo
+      \end{itemize}
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{GitHub}
+      \begin{itemize}
+        \item Backup em Nuvem
+        \item Colaboração com outras pessoas
+        \item Code review
+        \item Pull Requests
+        \item Issues
+        \item Integração contínua (CI/CD)
+        \item Permissões e controle de acesso
+      \end{itemize}
+    \end{block}
+  \end{columns}
+\end{frame}
