@@ -2,7 +2,7 @@
 % Desenvolvido por Silas Henrique (silash35@gmail.com).
 % Baseado no modelo em Word do Colegiado de Engenharia de Controle e Automação de Processos.
 
-% Pacotes
+% --- Pacotes ---
 \usepackage[english,brazilian]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -13,6 +13,7 @@
 \usepackage{setspace}
 \usepackage{indentfirst}
 \usepackage{parskip}
+\usepackage{titlesec}
 
 \usepackage{graphicx}
 \usepackage{float}
@@ -36,7 +37,7 @@
   sorting=nyt
 ]{biblatex}
 
-% Configurações
+% --- Configurações ---
 % \captionsetup{font=small, labelfont=bf, justification=centering}
 
 % \onehalfspacing
@@ -55,29 +56,70 @@
   andothers = {et al\adddot}
 }
 
-% Listas de figuras/tabelas/abreviaturas
-\AtBeginDocument{%
-  \renewcommand{\contentsname}{SUMÁRIO}
-  \renewcommand{\listfigurename}{LISTA DE FIGURAS}
-  \renewcommand{\listtablename}{LISTA DE TABELAS}
-}
-
 % Comandos customizados para dados da capa / folha de rosto
 \providecommand{\tccdataautor}{}
 \providecommand{\tccdatatitulo}{}
 \providecommand{\tccdataorientador}{}
 \providecommand{\tccdatacoorientador}{}
+\providecommand{\tccdatadia}{}
+\providecommand{\tccdatames}{}
 \providecommand{\tccdataano}{}
 
 \newcommand{\autor}[1]{\renewcommand{\tccdataautor}{#1}}
 \newcommand{\titulodotrabalho}[1]{\renewcommand{\tccdatatitulo}{#1}}
 \newcommand{\orientador}[1]{\renewcommand{\tccdataorientador}{#1}}
 \newcommand{\coorientador}[1]{\renewcommand{\tccdatacoorientador}{#1}}
-\newcommand{\anodotrabalho}[1]{\renewcommand{\tccdataano}{#1}}
+\newcommand{\datadotrabalho}[3]{%
+  \renewcommand{\tccdatadia}{#1}%
+  \renewcommand{\tccdatames}{#2}%
+  \renewcommand{\tccdataano}{#3}%
+}
+\newcommand{\tccdatadatacompleta}{\tccdatadia\ de \tccdatames\ de \tccdataano}
 
 % Atalhos para textos recorrentes
 \newcommand{\curso}{Engenharia de Controle e Automação de Processos}
 \newcommand{\universidade}{Engenharia de Controle e Automação de Processos}
+
+% --- Títulos ---
+% Título 1 (\section)
+\titleformat{\section}
+{\normalfont\normalsize\bfseries}
+{\thesection}
+{1em}
+{\MakeUppercase}
+\titlespacing*{\section}{0pt}{*2}{*1.5}
+
+% Título 2 (\subsection)
+\titleformat{\subsection}
+{\normalfont\normalsize}
+{\thesubsection}
+{1em}
+{}
+\titlespacing*{\subsection}{0pt}{*1.5}{*1}
+
+\newcommand{\titulopretextual}[1]{%
+  \par\noindent
+  \begin{center}
+    \normalfont\normalsize\bfseries \MakeUppercase{#1}
+  \end{center}
+}
+
+\makeatletter
+\renewcommand{\tableofcontents}{%
+  \titulopretextual{SUMÁRIO}%
+  \@starttoc{toc}%
+}
+\renewcommand{\listoffigures}{%
+  \titulopretextual{LISTA DE FIGURAS}%
+  \@starttoc{lof}%
+}
+\renewcommand{\listoftables}{%
+  \titulopretextual{LISTA DE TABELAS}%
+  \@starttoc{lot}%
+}
+\makeatother
+
+% --- Elementos pré-textuais ---
 
 % CAPA
 \newcommand{\makecapa}{%
@@ -106,7 +148,7 @@
 
       \vspace{4cm}
 
-      \textbf{\LARGE \tccdatatitulo}
+      \textbf{\large \tccdatatitulo}
 
       \vfill
 
@@ -124,7 +166,7 @@
 
       \vspace{4cm}
 
-      \textbf{\tccdatatitulo}
+      \textbf{\large \tccdatatitulo}
 
       \vspace{2cm}
     \end{center}
@@ -155,18 +197,19 @@
   \end{titlepage}
 }
 
+
+% FOLHA DE APROVAÇÃO
 \newcommand{\membroscomissao}{}
 
-\newcommand{\addmembrocomissao}[2]{%
+\newcommand{\addmembrocomissao}[1]{%
   \gappto{\membroscomissao}{%
-    \noindent #1\\
-    #2
-    \vspace{0.8cm}
+    \hspace{1cm} \vspace{1.65cm} \\
+    \noindent\rule{10cm}{0.4pt} \\
+    \hspace*{0.2cm}#1 \\
   }%
 }
 
-% FOLHA DE APROVAÇÃO
-\newcommand{\makefolhadeaprovacao}[1][XX de XXXXXX de 202X.]{%
+\newcommand{\makefolhadeaprovacao}{%
   \begin{titlepage}
     \thispagestyle{empty}
     \begin{center}
@@ -174,7 +217,7 @@
 
       \vspace{4cm}
 
-      \textbf{\tccdatatitulo}
+      \textbf{\large \tccdatatitulo}
 
       \vspace{2cm}
     \end{center}
@@ -183,20 +226,16 @@
     \begin{minipage}{0.5\textwidth}
       \noindent
       Trabalho de conclusão de curso apresentado ao
-      Colegiado do curso de \curso\ da Universidade Federal da Bahia
+      Colegiado do curso de \curso da Universidade Federal da Bahia
       como requisito parcial para obtenção do título de Bacharel em
       \curso.
+      \vspace{1cm} \\
+      \noindent \tccdatadatacompleta
     \end{minipage}
-
-    \vspace{2cm}
-
-    \noindent #1
 
     \vspace{1cm}
 
     \noindent Comissão examinadora:
-
-    \vspace{1.5cm}
 
     \membroscomissao
 
@@ -205,16 +244,14 @@
 
 % Ambientes: RESUMO e ABSTRACT
 \newenvironment{resumo}{
-  \section*{RESUMO}
-  \addcontentsline{toc}{section}{RESUMO}
+  \titulopretextual{RESUMO}
   \noindent\ignorespaces
 }{
   \par\vspace{0.5cm}
 }
 
 \renewenvironment{abstract}{
-  \section*{ABSTRACT}
-  \addcontentsline{toc}{section}{ABSTRACT}
+  \titulopretextual{ABSTRACT}
   \selectlanguage{english}
   \noindent\ignorespaces
 }{
