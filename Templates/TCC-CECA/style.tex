@@ -1,0 +1,223 @@
+% Modelo LaTeX para o TCC do curso de Engenharia de Controle e Automação de Processos da UFBA.
+% Desenvolvido por Silas Henrique (silash35@gmail.com).
+% Baseado no modelo em Word do Colegiado de Engenharia de Controle e Automação de Processos.
+
+% Pacotes
+\usepackage[english,brazilian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage{amssymb,amsfonts,amsmath}
+
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{parskip}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{array}
+
+\usepackage{xcolor}
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
+\usepackage[capitalise, noabbrev]{cleveref}
+
+\usepackage{etoolbox}
+
+\usepackage[
+  backend=biber,
+  style=authoryear,
+  natbib=true,
+  maxcitenames=1,
+  uniquename=false,
+  uniquelist=false,
+  dashed=false,
+  sorting=nyt
+]{biblatex}
+
+% Configurações
+% \captionsetup{font=small, labelfont=bf, justification=centering}
+
+% \onehalfspacing
+
+\geometry{
+  a4paper,
+  left=3cm,
+  right=2cm,
+  top=3cm,
+  bottom=2cm,
+  footskip=0cm
+}
+
+\addbibresource{references.bib}
+\DefineBibliographyStrings{brazil}{
+  andothers = {et al\adddot}
+}
+
+% Listas de figuras/tabelas/abreviaturas
+\AtBeginDocument{%
+  \renewcommand{\contentsname}{SUMÁRIO}
+  \renewcommand{\listfigurename}{LISTA DE FIGURAS}
+  \renewcommand{\listtablename}{LISTA DE TABELAS}
+}
+
+% Comandos customizados para dados da capa / folha de rosto
+\providecommand{\tccdataautor}{}
+\providecommand{\tccdatatitulo}{}
+\providecommand{\tccdataorientador}{}
+\providecommand{\tccdatacoorientador}{}
+\providecommand{\tccdataano}{}
+
+\newcommand{\autor}[1]{\renewcommand{\tccdataautor}{#1}}
+\newcommand{\titulodotrabalho}[1]{\renewcommand{\tccdatatitulo}{#1}}
+\newcommand{\orientador}[1]{\renewcommand{\tccdataorientador}{#1}}
+\newcommand{\coorientador}[1]{\renewcommand{\tccdatacoorientador}{#1}}
+\newcommand{\anodotrabalho}[1]{\renewcommand{\tccdataano}{#1}}
+
+% Atalhos para textos recorrentes
+\newcommand{\curso}{Engenharia de Controle e Automação de Processos}
+\newcommand{\universidade}{Engenharia de Controle e Automação de Processos}
+
+% CAPA
+\newcommand{\makecapa}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{center}
+      \begin{minipage}{0.15\textwidth}
+        \includegraphics[width=0.8\textwidth]{figures/ufba-icon.png}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.68\textwidth}
+        \centering
+        \textbf{UNIVERSIDADE FEDERAL DA BAHIA}\\
+        \textbf{ESCOLA POLITÉCNICA}\\
+        \textbf{COLEGIADO DO CURSO DE ENGENHARIA DE}\\
+        \textbf{CONTROLE E AUTOMAÇÃO DE PROCESSOS}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.15\textwidth}
+        \includegraphics[width=\textwidth]{figures/poli-icon.png}
+      \end{minipage}
+
+      \vspace{4cm}
+
+      \textbf{\tccdataautor}
+
+      \vspace{4cm}
+
+      \textbf{\LARGE \tccdatatitulo}
+
+      \vfill
+
+      Salvador\\
+      \tccdataano
+    \end{center}
+  \end{titlepage}
+}
+
+\newcommand{\makefolhaderosto}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{center}
+      \textbf{\tccdataautor}
+
+      \vspace{4cm}
+
+      \textbf{\tccdatatitulo}
+
+      \vspace{2cm}
+    \end{center}
+
+    \hspace{0.5\textwidth}
+    \begin{minipage}{0.5\textwidth}
+      \noindent
+      Trabalho de conclusão de curso apresentado ao
+      Colegiado do curso de \curso\ da Universidade Federal da Bahia
+      como requisito parcial para obtenção do título de bacharel em
+      \curso.
+
+      \vspace{0.5cm}
+
+      \noindent
+      Orientador(a): \tccdataorientador
+
+      \noindent
+      Coorientador(a): \tccdatacoorientador
+    \end{minipage}
+
+    \vfill
+
+    \begin{center}
+      Salvador\\
+      \tccdataano
+    \end{center}
+  \end{titlepage}
+}
+
+\newcommand{\membroscomissao}{}
+
+\newcommand{\addmembrocomissao}[2]{%
+  \gappto{\membroscomissao}{%
+    \noindent #1\\
+    #2
+    \vspace{0.8cm}
+  }%
+}
+
+% FOLHA DE APROVAÇÃO
+\newcommand{\makefolhadeaprovacao}[1][XX de XXXXXX de 202X.]{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{center}
+      \textbf{\tccdataautor}
+
+      \vspace{4cm}
+
+      \textbf{\tccdatatitulo}
+
+      \vspace{2cm}
+    \end{center}
+
+    \hspace{0.5\textwidth}
+    \begin{minipage}{0.5\textwidth}
+      \noindent
+      Trabalho de conclusão de curso apresentado ao
+      Colegiado do curso de \curso\ da Universidade Federal da Bahia
+      como requisito parcial para obtenção do título de Bacharel em
+      \curso.
+    \end{minipage}
+
+    \vspace{2cm}
+
+    \noindent #1
+
+    \vspace{1cm}
+
+    \noindent Comissão examinadora:
+
+    \vspace{1.5cm}
+
+    \membroscomissao
+
+  \end{titlepage}
+}
+
+% Ambientes: RESUMO e ABSTRACT
+\newenvironment{resumo}{
+  \section*{RESUMO}
+  \addcontentsline{toc}{section}{RESUMO}
+  \noindent\ignorespaces
+}{
+  \par\vspace{0.5cm}
+}
+
+\renewenvironment{abstract}{
+  \section*{ABSTRACT}
+  \addcontentsline{toc}{section}{ABSTRACT}
+  \selectlanguage{english}
+  \noindent\ignorespaces
+}{
+  \par\vspace{0.5cm}
+  \selectlanguage{brazil}
+}
