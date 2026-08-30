@@ -12,7 +12,6 @@
 \usepackage{geometry}
 \usepackage{setspace}
 \usepackage{indentfirst}
-\usepackage{parskip}
 \usepackage{titlesec}
 
 \usepackage{graphicx}
@@ -21,26 +20,17 @@
 \usepackage{array}
 
 \usepackage{xcolor}
-\usepackage[colorlinks=true, linkcolor=black, citecolor=black, urlcolor=blue]{hyperref}
-\usepackage[capitalise, noabbrev]{cleveref}
 
 \usepackage{etoolbox}
 
-\usepackage[
-  backend=biber,
-  style=authoryear,
-  natbib=true,
-  maxcitenames=1,
-  uniquename=false,
-  uniquelist=false,
-  dashed=false,
-  sorting=nyt
-]{biblatex}
+\usepackage[style=abnt]{biblatex}
+
+\usepackage[hidelinks]{hyperref}
 
 % --- Configurações ---
 % \captionsetup{font=small, labelfont=bf, justification=centering}
-
-% \onehalfspacing
+\setlength{\parindent}{1.25cm}
+\onehalfspacing
 
 \geometry{
   a4paper,
@@ -171,22 +161,18 @@
       \vspace{2cm}
     \end{center}
 
-    \hspace{0.5\textwidth}
-    \begin{minipage}{0.5\textwidth}
-      \noindent
-      Trabalho de conclusão de curso apresentado ao
-      Colegiado do curso de \curso\ da Universidade Federal da Bahia
-      como requisito parcial para obtenção do título de bacharel em
-      \curso.
+    \begingroup
+    \setlength{\leftskip}{7cm}
 
-      \vspace{0.5cm}
+    \noindent Trabalho de conclusão de curso apresentado ao Colegiado do curso de \curso\ da Universidade Federal da Bahia como requisito parcial para obtenção do título de bacharel em \curso.
 
-      \noindent
-      Orientador(a): \tccdataorientador
+    \vspace{0.5cm}
 
-      \noindent
-      Coorientador(a): \tccdatacoorientador
-    \end{minipage}
+    \noindent Orientador(a): \tccdataorientador
+
+    \noindent Coorientador(a): \tccdatacoorientador
+
+    \endgroup
 
     \vfill
 
@@ -203,7 +189,7 @@
 
 \newcommand{\addmembrocomissao}[1]{%
   \gappto{\membroscomissao}{%
-    \hspace{1cm} \vspace{1.65cm} \\
+    \hspace{1cm} \vspace{1.2cm} \\
     \noindent\rule{10cm}{0.4pt} \\
     \hspace*{0.2cm}#1 \\
   }%
@@ -222,16 +208,16 @@
       \vspace{2cm}
     \end{center}
 
-    \hspace{0.5\textwidth}
-    \begin{minipage}{0.5\textwidth}
-      \noindent
-      Trabalho de conclusão de curso apresentado ao
-      Colegiado do curso de \curso da Universidade Federal da Bahia
-      como requisito parcial para obtenção do título de Bacharel em
-      \curso.
-      \vspace{1cm} \\
-      \noindent \tccdatadatacompleta
-    \end{minipage}
+    \begingroup
+    \setlength{\leftskip}{7cm}
+
+    \noindent Trabalho de conclusão de curso apresentado ao Colegiado do curso de \curso da Universidade Federal da Bahia como requisito parcial para obtenção do título de Bacharel em \curso.
+
+    \vspace{0.5cm}
+
+    \noindent \tccdatadatacompleta
+
+    \endgroup
 
     \vspace{1cm}
 
@@ -257,4 +243,26 @@
 }{
   \par\vspace{0.5cm}
   \selectlanguage{brazil}
+}
+
+% --- Elementos pós-textuais ---
+\newcounter{apendice}
+\newcounter{anexo}
+
+% Formato das referências
+\renewcommand{\theapendice}{\Alph{apendice}}
+\renewcommand{\theanexo}{\Alph{anexo}}
+
+% Comando para apêndices
+\newcommand{\apendice}[1]{%
+  \refstepcounter{apendice}%
+  \section*{APÊNDICE \theapendice\ - #1}%
+  \addcontentsline{toc}{section}{APÊNDICE \theapendice\ - #1}%
+}
+
+% Comando para anexos
+\newcommand{\anexo}[1]{%
+  \refstepcounter{anexo}%
+  \section*{ANEXO \theanexo\ - #1}%
+  \addcontentsline{toc}{section}{ANEXO \theanexo\ - #1}%
 }

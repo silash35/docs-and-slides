@@ -9,6 +9,7 @@
 \datadotrabalho{XX}{XXXXXX}{202X}
 
 \begin{document}
+
 % Elementos pré-textuais
 \pagenumbering{roman}
 
@@ -31,9 +32,6 @@ Seção voltada a agradecimentos. (OPCIONAL)
 \input{content/0.resumo.tex}
 \newpage
 
-\tableofcontents
-\newpage
-
 \listoffigures
 \newpage
 
@@ -42,6 +40,9 @@ Seção voltada a agradecimentos. (OPCIONAL)
 
 \titulopretextual{LISTA DE ABREVIATURAS E SIGLAS}
 \noindent ABNT -- Associação Brasileira de Normas Técnicas
+\newpage
+
+\tableofcontents
 \newpage
 
 % Elementos textuais
@@ -60,19 +61,19 @@ Seção voltada a agradecimentos. (OPCIONAL)
 
 % Referências
 \printbibliography[title={REFERÊNCIAS}, heading=bibintoc]
+\newpage
 
 % Elementos pós-textuais
-
-\appendix
-\section*{APÊNDICE A}
-\addcontentsline{toc}{section}{APÊNDICE A}
+\apendice{Exemplo de Apêndice}
+\label{ap:exemplo}
 Espaço voltado aos textos/resultados/materiais que sejam de desenvolvimento próprio seu.
 O apêndice deve ser, necessariamente, citado no corpo do seu texto.
+\newpage
 
-\section*{ANEXO A}
-\addcontentsline{toc}{section}{ANEXO A}
-Espaço voltado à inclusão de material de terceiros, que sejam de extrema importância
-para o entendimento do seu trabalho. Inclua com a devida citação.
+\anexo{Exemplo de Anexo}
+\label{an:exemplo}
+Espaço voltado à inclusão de material de terceiros, que sejam de extrema importância para o entendimento do seu trabalho.
+Inclua com a devida citação.
 O anexo deve ser, necessariamente, citado no corpo do seu texto.
 
 \end{document}
