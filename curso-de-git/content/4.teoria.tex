@@ -48,35 +48,37 @@
 
   \note{
     Uma tag é um nome dado a um ponto específico do histórico.
-    Ela é usada principalmente para marcar versões importantes do projeto, como uma versão de lançamento. Diferentemente de uma branch, uma tag não representa uma linha de desenvolvimento.
+    Ela é utilizada principalmente para marcar versões importantes do projeto, como uma versão de lançamento. Diferentemente de uma branch, uma tag não representa uma linha de desenvolvimento.
   }
 \end{frame}
 
 \begin{frame}{O fluxo de trabalho do Git}
   \centering
   \includegraphics[width=1\linewidth]{git-workflow.jpg}
-
-  \note{
-    Vamos imaginar que estamos trabalhando em um projeto.
-
-    Primeiro, estamos simplesmente editando os arquivos.
-    Esse é o Working Directory: o estado atual dos arquivos no nosso computador.
-
-    Agora fizemos três alterações: corrigimos um erro, adicionamos uma funcionalidade e também alteramos a documentação.
-    Mas talvez não queiramos registrar as três coisas juntas no mesmo commit.
-    Queremos fazer um commit apenas com a correção do erro.
-
-    É aí que entra a Staging Area.
-    Ela funciona como uma área de preparação: colocamos nela exatamente as alterações que queremos incluir no próximo commit.
-
-    Quando fazemos o commit, essas alterações passam a fazer parte do histórico do nosso Local Repository.
-    Esse histórico fica no nosso computador e podemos consultá-lo sem precisar de internet.
-
-    Depois, quando quisermos compartilhar esses commits, enviamos nosso histórico para um Remote Repository.
-    Esse tal de Remote Repository pode ser o GitHub, o GitLab ou qualquer outra plataforma que você estiver usando.
-
-    Mas ele nem precisa estar na internet.
-    Pode ser simplesmente outro repositório em outra máquina ou até outra pasta no seu próprio computador.
-    O Git não sabe nem se importa se existe um GitHub por trás disso.
-  }
 \end{frame}
+
+\note{
+  Vamos imaginar que estamos trabalhando em um projeto.
+
+  Primeiro, estamos simplesmente editando os arquivos.
+  Esse é o Working Directory: o estado atual dos arquivos no nosso computador.
+
+  Agora fizemos três alterações: corrigimos um erro, adicionamos uma funcionalidade e também alteramos a documentação.
+  Mas talvez não queiramos registrar as três coisas juntas no mesmo commit.
+  Queremos fazer um commit apenas com a correção do erro.
+
+  É aí que entra a Staging Area.
+  Ela funciona como uma área de preparação: colocamos nela exatamente as alterações que queremos incluir no próximo commit.
+
+  Quando fazemos o commit, essas alterações passam a fazer parte do histórico do nosso Local Repository.
+  Esse histórico fica no nosso computador e podemos consultá-lo sem precisar de internet.
+}
+
+\note{
+  Depois, quando quisermos compartilhar esses commits, enviamos nosso histórico para um Remote Repository.
+  Esse tal de Remote Repository pode ser o GitHub, o GitLab ou qualquer outra plataforma que você estiver utilizando.
+
+  Mas ele nem precisa estar na internet.
+  Pode ser simplesmente outro repositório em outra máquina ou até outra pasta no seu próprio computador.
+  O Git não sabe nem se importa se existe um GitHub por trás disso.
+}

@@ -1,53 +1,150 @@
-\section{Comandos Básicos do Git}
+\section{Prática com Git}
 
-\begin{frame}{Fluxo mínimo para começar}
-  \begin{enumerate}
-    \item \texttt{git init} — inicializar repositório local
-    \item \texttt{git clone <url>} — clonar repositório remoto
-    \item \texttt{git status} — checar estado do repositório
-    \item \texttt{git add <arquivo>} — preparar (stage) alterações
-    \item \texttt{git commit -m "mensagem"} — criar um commit
-    \item \texttt{git push} / \texttt{git pull} — sincronizar com remoto
-  \end{enumerate}
+\begin{frame}{Nosso projeto}
+
+  \begin{block}{Objetivo}
+    Vamos escrever o cardápio de um restaurante utilizando o Git para acompanhar o processo de desenvolvimento.
+  \end{block}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Ambiente Local}
+        No seu computador:
+        \begin{itemize}
+          \item Instale o Git pelo site oficial.
+          \item Crie uma conta no GitHub.
+        \end{itemize}
+        \vspace{0.2cm}
+        \centering
+
+        \href{https://git-scm.com/}{\textbf{🌐 git-scm.com}} \quad \href{https://github.com/}{\textbf{🌐 github.com}}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Ambiente Online}
+        Vamos utilizar o GitHub Codespaces.
+
+        \vspace{0.2cm}
+        Ele fornece um ambiente de desenvolvimento já configurado para trabalharmos com o Git.
+
+        \vspace{0.2cm}
+        \centering
+        \href{https://github.com/codespaces}{\textbf{🌐 github.com/codespaces}}
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Explorando o histórico}
-  \begin{itemize}
-    \item \texttt{git log} — histórico de commits (use \texttt{--oneline --graph --all})
-    \item \texttt{git show <commit>} — mostrar conteúdo e metadados de um commit
-    \item \texttt{git diff} — ver diferenças entre working tree, index e commits
-  \end{itemize}
+\begin{frame}{Primeiro passo: identificar o autor}
+  \begin{block}{Configurando o Git}
+    Antes de começar, vamos informar quem está fazendo os commits.
+
+    \vspace{0.3cm}
+
+    \texttt{git config --global user.name "Your Name"}
+
+    \texttt{git config --global user.email "you@example.com"}
+  \end{block}
 \end{frame}
 
-\begin{frame}{Branches e fluxo de trabalho}
-  \begin{itemize}
-    \item \texttt{git branch} — listar/ criar branches
-    \item \texttt{git checkout <branch>} ou \texttt{git switch <branch>} — trocar de branch
-    \item \texttt{git merge <branch>} — mesclar branch no atual
-    \item Fluxos comuns: feature branches, Git Flow, GitHub Flow (pull requests)
-  \end{itemize}
+
+\begin{frame}{Criando o projeto}
+
+  \begin{block}{Nosso projeto}
+    Vamos criar o repositório do cardápio da
+    \textbf{Cantina da Poli}.
+  \end{block}
+
+  \begin{block}{Criando o diretório}
+    \texttt{mkdir cantina-da-poli}
+
+    \texttt{cd cantina-da-poli}
+  \end{block}
+
+  \begin{block}{\texttt{git init} — inicia o repositório}
+    \texttt{git init}
+  \end{block}
+
 \end{frame}
 
-\begin{frame}[fragile]{Recuperação e correção}
-  \begin{itemize}
-    \item \texttt{git restore --staged <file>} — remover do stage
-    \item \texttt{git reset --soft/--mixed/--hard <commit>} — resetar HEAD e index
-    \item \texttt{git revert <commit>} — criar novo commit que desfaz outro commit (seguro em branches compartilhadas)
-    \item \texttt{git rebase} — reaplicar commits em novo ponto base (atenção ao rebase de commits já compartilhados)
-  \end{itemize}
+
+\begin{frame}{Nosso primeiro commit}
+
+  \begin{block}{Criando o cardápio}
+    Vamos criar o primeiro arquivo do projeto:
+
+    \vspace{0.3cm}
+    \texttt{index.html}
+  \end{block}
+
+  \begin{block}{Verificando as alterações}
+    \texttt{git status}
+  \end{block}
+
+  \begin{block}{Preparando o commit}
+    \texttt{git add .}
+  \end{block}
+
+  \begin{block}{Registrando o primeiro estado do projeto}
+    \texttt{git commit -m "Cria o cardápio da Cantina da Poli"}
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}{A Cantina está crescendo}
+
+  \begin{block}{Adicionando uma nova funcionalidade}
+    Vamos alterar o cardápio e adicionar novos pratos.
+  \end{block}
+
+  \begin{block}{Verificando o que mudou}
+    \texttt{git status}
+  \end{block}
+
+  \begin{block}{Registrando a alteração}
+    \texttt{git add .}
+
+    \texttt{git commit -m "Adiciona novos pratos ao cardápio"}
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}{Consultando a história do projeto}
+
+  \begin{block}{\texttt{git log} — histórico de commits}
+    \texttt{git log}
+
+    \vspace{0.2cm}
+    Podemos ver como o cardápio foi evoluindo ao longo do tempo.
+  \end{block}
+
+  \begin{block}{\texttt{git show} — detalhes de um commit}
+    \texttt{git show}
+
+    \vspace{0.2cm}
+    Mostra as alterações realizadas em um commit.
+  \end{block}
+
+\end{frame}
+
+
+\begin{frame}{Publicando o projeto}
+
+  \begin{block}{Repositório remoto}
+    Agora queremos compartilhar o projeto da
+    \textbf{Cantina da Poli} com outras pessoas.
+  \end{block}
+
+  \begin{block}{\texttt{git push} — envia os commits}
+    \texttt{git push}
+  \end{block}
+
 \end{frame}
 
 \begin{frame}{Arquivos úteis}
   \begin{itemize}
     \item \texttt{.gitignore} — listar arquivos que não devem ser versionados
     \item \texttt{.gitattributes} — controlar tratamento de arquivos, diffs, merges
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Próximos passos sugeridos}
-  \begin{itemize}
-    \item Prática: criar repositórios, branches e PRs em uma plataforma como GitHub.
-    \item Aprender integração contínua (CI) e proteção de branches.
-    \item Avançar em temas: submodules, hooks, repositórios monorepo, segurança de commits.
   \end{itemize}
 \end{frame}

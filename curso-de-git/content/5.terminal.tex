@@ -1,24 +1,112 @@
 \section{Comandos básicos do Terminal}
 
 \begin{frame}{Por que aprender comandos do terminal?}
-  \begin{itemize}
-    \item O Git é otimizado para uso via linha de comando; entender o terminal torna operações mais rápidas e repetíveis.
-    \item Automatização de tarefas e scripts dependem do terminal.
-  \end{itemize}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item O Git é otimizado para uso via linha de comando.
+      \item Entender o terminal torna operações mais rápidas e repetíveis.
+      \item Automatização de tarefas e scripts dependem do terminal.
+    \end{itemize}
+    \column{0.5\textwidth}
+    \includegraphics[width=\linewidth]{terminal.jpg}
+  \end{columns}
 \end{frame}
 
-% Ensinar comando diff e patch, hash (como o Git verifica se corrompeu)
+\begin{frame}{Comandos básicos do Linux}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{\texttt{pwd}: mostra o diretório atual}
+      \texttt{pwd}
+    \end{block}
 
-\begin{frame}[fragile]{Comandos essenciais}
-  \begin{itemize}
-    \item \texttt{pwd} — mostra o diretório atual
-    \item \texttt{ls} — lista arquivos (\texttt{ls -la} mostra detalhes)
-    \item \texttt{cd} — muda de diretório
-    \item \texttt{mkdir}, \texttt{rmdir} — criar/ remover diretórios
-    \item \texttt{rm}, \texttt{cp}, \texttt{mv} — manipular arquivos
-    \item \texttt{cat}, \texttt{less}, \texttt{head}, \texttt{tail} — visualizar conteúdo
-    \item \texttt{touch} — criar arquivo vazio ou atualizar timestamp
-    \item \texttt{grep} — buscar texto em arquivos
-    \item \texttt{history} e \texttt{!! / !n} — repetir comandos
-  \end{itemize}
+    \begin{block}{\texttt{mkdir}: cria um diretório}
+      \texttt{mkdir aula-linux}
+    \end{block}
+
+    \begin{block}{\texttt{ls}: lista arquivos e diretórios}
+      \texttt{ls}
+    \end{block}
+
+    \begin{block}{\texttt{cd}: entra em um diretório}
+      \texttt{cd aula-linux}
+    \end{block}
+
+    \begin{block}{\texttt{echo}: exibe um texto}
+      \texttt{echo "Hello World"}
+    \end{block}
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{linux-user.jpg}
+  \end{columns}
 \end{frame}
+
+\begin{frame}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{\texttt{>} (Output Redirection): redireciona a saída para um arquivo}
+      \texttt{echo "Hello World" > mensagem.txt}
+    \end{block}
+
+    \begin{block}{\texttt{ls}: lista arquivos e diretórios}
+      \texttt{ls}
+    \end{block}
+
+    \begin{block}{\texttt{cat}: mostra o conteúdo de um arquivo}
+      \texttt{cat mensagem.txt}
+    \end{block}
+
+    \begin{block}{\texttt{rm}: remove um arquivo}
+      \texttt{rm mensagem.txt}
+    \end{block}
+
+    \begin{block}{\texttt{rmdir}: remove um diretório vazio}
+      \texttt{rmdir aula-linux}
+    \end{block}
+
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{cat.jpeg}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{\texttt{diff}: compara dois arquivos}
+    \texttt{diff arquivo1.txt arquivo2.txt}
+  \end{block}
+  \begin{block}{\texttt{patch}: aplica alterações em um arquivo}
+    \texttt{diff -u arquivo1.txt arquivo2.txt > alteracoes.patch}
+
+    \vspace{0.2cm}
+    Cria um arquivo com as diferenças entre as duas versões.
+
+    \vspace{0.3cm}
+    \texttt{patch arquivo1.txt < alteracoes.patch}
+
+    \vspace{0.2cm}
+    Aplica as alterações de \texttt{alteracoes.patch} em \texttt{arquivo1.txt}.
+  \end{block}
+
+  \begin{block}{\texttt{sha256sum}: calcula o hash SHA-256}
+    \texttt{sha256sum arquivo1.txt}
+
+    \vspace{0.3cm}
+    Gera uma sequência hexadecimal que identifica o conteúdo do arquivo (hash).
+  \end{block}
+\end{frame}
+
+\note{
+  \texttt{diff}, \texttt{patch} e hashes são conceitos importantes no Git.
+
+  Um commit pode ser representado como um patch, contendo as alterações
+  realizadas e informações sobre o commit.
+  Como o patch registra apenas as diferenças, não é necessário enviar uma cópia completa do arquivo, economizando espaço e facilitando o envio das alterações.
+
+  Esse patch pode ser enviado por e-mail e aplicado ao repositório de outro desenvolvedor.
+
+  Esse fluxo é utilizado no desenvolvimento do kernel Linux: os desenvolvedores enviam patches por e-mail para revisão, e os mantenedores os aplicam ao repositório.
+
+  O Git também utiliza hashes para identificar e verificar seus objetos.
+  É uma segurança contra corrupção de dados.
+}
