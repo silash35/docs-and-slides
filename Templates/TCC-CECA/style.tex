@@ -1,0 +1,269 @@
+% Modelo LaTeX para o TCC do curso de Engenharia de Controle e Automação de Processos da UFBA.
+% Desenvolvido por Silas Henrique (silash35@gmail.com).
+% Baseado no modelo em Word do Colegiado de Engenharia de Controle e Automação de Processos.
+
+% --- Pacotes ---
+\usepackage[english,brazilian]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage{amssymb,amsfonts,amsmath}
+
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{array}
+
+\usepackage{xcolor}
+
+\usepackage{etoolbox}
+
+\usepackage[style=abnt]{biblatex}
+
+\usepackage[hidelinks]{hyperref}
+
+% --- Configurações ---
+% \captionsetup{font=small, labelfont=bf, justification=centering}
+\setlength{\parindent}{1.25cm}
+\onehalfspacing
+
+\geometry{
+  a4paper,
+  left=3cm,
+  right=2cm,
+  top=3cm,
+  bottom=2cm,
+  footskip=0cm
+}
+
+\addbibresource{references.bib}
+\DefineBibliographyStrings{brazil}{
+  andothers = {et al\adddot}
+}
+
+% Comandos customizados para dados da capa / folha de rosto
+\providecommand{\tccdataautor}{}
+\providecommand{\tccdatatitulo}{}
+\providecommand{\tccdataorientador}{}
+\providecommand{\tccdatacoorientador}{}
+\providecommand{\tccdatadia}{}
+\providecommand{\tccdatames}{}
+\providecommand{\tccdataano}{}
+
+\newcommand{\autor}[1]{\renewcommand{\tccdataautor}{#1}}
+\newcommand{\titulodotrabalho}[1]{\renewcommand{\tccdatatitulo}{#1}}
+\newcommand{\orientador}[1]{\renewcommand{\tccdataorientador}{#1}}
+\newcommand{\coorientador}[1]{\renewcommand{\tccdatacoorientador}{#1}}
+\newcommand{\datadotrabalho}[3]{%
+  \renewcommand{\tccdatadia}{#1}%
+  \renewcommand{\tccdatames}{#2}%
+  \renewcommand{\tccdataano}{#3}%
+}
+\newcommand{\tccdatadatacompleta}{\tccdatadia\ de \tccdatames\ de \tccdataano}
+
+% Atalhos para textos recorrentes
+\newcommand{\curso}{Engenharia de Controle e Automação de Processos}
+\newcommand{\universidade}{Engenharia de Controle e Automação de Processos}
+
+% --- Títulos ---
+% Título 1 (\section)
+\titleformat{\section}
+{\normalfont\normalsize\bfseries}
+{\thesection}
+{1em}
+{\MakeUppercase}
+\titlespacing*{\section}{0pt}{*2}{*1.5}
+
+% Título 2 (\subsection)
+\titleformat{\subsection}
+{\normalfont\normalsize}
+{\thesubsection}
+{1em}
+{}
+\titlespacing*{\subsection}{0pt}{*1.5}{*1}
+
+\newcommand{\titulopretextual}[1]{%
+  \par\noindent
+  \begin{center}
+    \normalfont\normalsize\bfseries \MakeUppercase{#1}
+  \end{center}
+}
+
+\makeatletter
+\renewcommand{\tableofcontents}{%
+  \titulopretextual{SUMÁRIO}%
+  \@starttoc{toc}%
+}
+\renewcommand{\listoffigures}{%
+  \titulopretextual{LISTA DE FIGURAS}%
+  \@starttoc{lof}%
+}
+\renewcommand{\listoftables}{%
+  \titulopretextual{LISTA DE TABELAS}%
+  \@starttoc{lot}%
+}
+\makeatother
+
+% --- Elementos pré-textuais ---
+
+% CAPA
+\newcommand{\makecapa}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{center}
+      \begin{minipage}{0.15\textwidth}
+        \includegraphics[width=0.8\textwidth]{figures/ufba-icon.png}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.68\textwidth}
+        \centering
+        \textbf{UNIVERSIDADE FEDERAL DA BAHIA}\\
+        \textbf{ESCOLA POLITÉCNICA}\\
+        \textbf{COLEGIADO DO CURSO DE ENGENHARIA DE}\\
+        \textbf{CONTROLE E AUTOMAÇÃO DE PROCESSOS}
+      \end{minipage}
+      \hfill
+      \begin{minipage}{0.15\textwidth}
+        \includegraphics[width=\textwidth]{figures/poli-icon.png}
+      \end{minipage}
+
+      \vspace{4cm}
+
+      \textbf{\tccdataautor}
+
+      \vspace{4cm}
+
+      \textbf{\large \tccdatatitulo}
+
+      \vfill
+
+      Salvador\\
+      \tccdataano
+    \end{center}
+  \end{titlepage}
+}
+
+\newcommand{\makefolhaderosto}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{center}
+      \textbf{\tccdataautor}
+
+      \vspace{4cm}
+
+      \textbf{\large \tccdatatitulo}
+
+      \vspace{2cm}
+    \end{center}
+
+    \begingroup
+    \setlength{\leftskip}{7cm}
+
+    \noindent Trabalho de conclusão de curso apresentado ao Colegiado do curso de \curso\ da Universidade Federal da Bahia como requisito parcial para obtenção do título de bacharel em \curso.
+
+    \vspace{0.5cm}
+
+    \noindent Orientador(a): \tccdataorientador
+
+    \noindent Coorientador(a): \tccdatacoorientador
+
+    \endgroup
+
+    \vfill
+
+    \begin{center}
+      Salvador\\
+      \tccdataano
+    \end{center}
+  \end{titlepage}
+}
+
+
+% FOLHA DE APROVAÇÃO
+\newcommand{\membroscomissao}{}
+
+\newcommand{\addmembrocomissao}[1]{%
+  \gappto{\membroscomissao}{%
+    \vspace{1.4cm}%
+    \noindent\rule{10cm}{0.4pt}\par
+    \vspace{0.01mm}%
+    \noindent\hspace*{0.2cm}#1\par
+  }%
+}
+
+\newcommand{\makefolhadeaprovacao}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{center}
+      \textbf{\tccdataautor}
+
+      \vspace{4cm}
+
+      \textbf{\large \tccdatatitulo}
+
+      \vspace{2cm}
+    \end{center}
+
+    \begingroup
+    \setlength{\leftskip}{7cm}
+
+    \noindent Trabalho de conclusão de curso apresentado ao Colegiado do curso de \curso da Universidade Federal da Bahia como requisito parcial para obtenção do título de Bacharel em \curso.
+
+    \vspace{0.5cm}
+
+    \noindent \tccdatadatacompleta
+
+    \endgroup
+
+    \vspace{1cm}
+
+    \noindent Comissão examinadora:
+
+    \membroscomissao
+
+  \end{titlepage}
+}
+
+% Ambientes: RESUMO e ABSTRACT
+\newenvironment{resumo}{
+  \titulopretextual{RESUMO}
+  \noindent\ignorespaces
+}{
+  \par\vspace{0.5cm}
+}
+
+\renewenvironment{abstract}{
+  \titulopretextual{ABSTRACT}
+  \selectlanguage{english}
+  \noindent\ignorespaces
+}{
+  \par\vspace{0.5cm}
+  \selectlanguage{brazil}
+}
+
+% --- Elementos pós-textuais ---
+\newcounter{apendice}
+\newcounter{anexo}
+
+% Formato das referências
+\renewcommand{\theapendice}{\Alph{apendice}}
+\renewcommand{\theanexo}{\Alph{anexo}}
+
+% Comando para apêndices
+\newcommand{\apendice}[1]{%
+  \refstepcounter{apendice}%
+  \section*{APÊNDICE \theapendice\ - #1}%
+  \addcontentsline{toc}{section}{APÊNDICE \theapendice\ - #1}%
+}
+
+% Comando para anexos
+\newcommand{\anexo}[1]{%
+  \refstepcounter{anexo}%
+  \section*{ANEXO \theanexo\ - #1}%
+  \addcontentsline{toc}{section}{ANEXO \theanexo\ - #1}%
+}

@@ -1,0 +1,57 @@
+\section{Fundamentação Teórica}
+
+Seção voltada a apresentar os principais conceitos necessários para entendimento do
+trabalho.
+É imprescindível o uso correto das referências bibliográficas.
+
+Nesta seção, o uso de figuras pode auxiliar na explicitação do conteúdo, conforme exemplificado pela Figura~\ref{fig:tanque}.
+Caso a Figura não seja de sua autoria, indique a fonte.
+
+Toda Figura, Tabela e Equação devem ser devidamente citadas no texto.
+A Figura~\ref{fig:tanque}, por exemplo, ilustra o controle de nível em um tanque cônico.
+Os valores estão apresentados na Tabela~\ref{tab:parametros}.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/tank.png}
+  \caption{Tanque com área variável}
+  \label{fig:tanque}
+\end{figure}
+
+Para tabelas, você pode utilizar o ambiente \texttt{table} para inclusão.
+Veja o exemplo da Tabela~\ref{tab:parametros}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Parâmetros do tanque cônico}
+  \label{tab:parametros}
+  \begin{tabular}{ccc}
+    \hline
+    Parâmetro & Valor \\
+    \hline
+    $h_M$ / M & 2,0   \\
+    $A$ / M   & 0,5   \\
+    $B$ / M   & 0,2   \\
+    \hline
+  \end{tabular}
+\end{table}
+
+Recomendamos que a expressão de grandezas seja realizada seguindo o Sistema Internacional de Unidade, SI \parencite{inmetro2021}, utilizando o vocabulário metrológico adequado, seguindo o VIM \parencite{inmetro2012}.
+
+Para equações, utilize \LaTeX, conforme exemplo:
+\begin{equation}
+  V(h) =
+  \frac{\pi \cdot \gamma^2}{3} \cdot \left(h + \frac{B}{2\gamma}\right)^3
+  -
+  \frac{\pi \cdot  \left(\frac{B}{2}\right)^3}{3 \cdot \gamma},
+\end{equation}
+em que, $V$ é o volume do tanque, apresentado pela Figura~\ref{fig:tanque}, $h$ é a altura, $B$ é o diâmetro da base e $\gamma$ é expresso por:
+\begin{equation}
+  \gamma =
+  \frac{
+    \frac{A}{2} - \frac{B}{2}
+  }{
+    h_M
+  }.
+\end{equation}
+em que, $A$ é o diâmetro do topo e $h_M$ é a altura máxima do tanque.
