@@ -51,76 +51,52 @@
 \begin{frame}{Criando o projeto}
 
   \begin{block}{Nosso projeto}
-    Vamos criar o repositório do cardápio da
-    \textbf{Cantina da Poli}.
+    Vamos criar o repositório do cardápio.
   \end{block}
 
-  \begin{block}{Criando o diretório}
-    \texttt{mkdir cantina-da-poli}
-
-    \texttt{cd cantina-da-poli}
-  \end{block}
-
-  \begin{block}{\texttt{git init} — inicia o repositório}
+  \begin{block}{\texttt{git init}: inicia o repositório}
     \texttt{git init}
   \end{block}
 
+  \begin{block}{Criando o arquivo README.md}
+    Vamos criar o primeiro arquivo do projeto:
+
+    \vspace{0.3cm}
+    \texttt{touch README.md}
+  \end{block}
 \end{frame}
 
 
 \begin{frame}{Nosso primeiro commit}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{Verificando as alterações}
+      \texttt{git status}
+    \end{block}
 
-  \begin{block}{Criando o cardápio}
-    Vamos criar o primeiro arquivo do projeto:
+    \begin{block}{Preparando o commit}
+      \texttt{git add .}
+    \end{block}
 
-    \vspace{0.3cm}
-    \texttt{index.html}
-  \end{block}
-
-  \begin{block}{Verificando as alterações}
-    \texttt{git status}
-  \end{block}
-
-  \begin{block}{Preparando o commit}
-    \texttt{git add .}
-  \end{block}
-
-  \begin{block}{Registrando o primeiro estado do projeto}
-    \texttt{git commit -m "Cria o cardápio da Cantina da Poli"}
-  \end{block}
-
-\end{frame}
-
-
-\begin{frame}{A Cantina está crescendo}
-
-  \begin{block}{Adicionando uma nova funcionalidade}
-    Vamos alterar o cardápio e adicionar novos pratos.
-  \end{block}
-
-  \begin{block}{Verificando o que mudou}
-    \texttt{git status}
-  \end{block}
-
-  \begin{block}{Registrando a alteração}
-    \texttt{git add .}
-
-    \texttt{git commit -m "Adiciona novos pratos ao cardápio"}
-  \end{block}
-
+    \begin{block}{Registrando o primeiro estado do projeto}
+      \texttt{git commit -m "Add README.md file"}
+    \end{block}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.75\linewidth]{commit-meme.png}
+  \end{columns}
 \end{frame}
 
 
 \begin{frame}{Consultando a história do projeto}
-
-  \begin{block}{\texttt{git log} — histórico de commits}
+  \begin{block}{\texttt{git log}: histórico de commits}
     \texttt{git log}
 
     \vspace{0.2cm}
-    Podemos ver como o cardápio foi evoluindo ao longo do tempo.
+    Podemos ver como o projeto foi evoluindo ao longo do tempo.
   \end{block}
 
-  \begin{block}{\texttt{git show} — detalhes de um commit}
+  \begin{block}{\texttt{git show}: detalhes de um commit}
     \texttt{git show}
 
     \vspace{0.2cm}
@@ -131,16 +107,18 @@
 
 
 \begin{frame}{Publicando o projeto}
-
-  \begin{block}{Repositório remoto}
-    Agora queremos compartilhar o projeto da
-    \textbf{Cantina da Poli} com outras pessoas.
+  \begin{block}{Pulicando o projeto no GitHub}
+    \texttt{git remote add origin \<URL_do_repositório\>}
+    \texttt{git push -u origin main}
   \end{block}
 
-  \begin{block}{\texttt{git push} — envia os commits}
+  \begin{block}{\texttt{git clone}: clona um repositório já existente}
+    \texttt{git clone \<URL_do_repositório\>}
+  \end{block}
+
+  \begin{block}{\texttt{git push}: envia os commits}
     \texttt{git push}
   \end{block}
-
 \end{frame}
 
 \begin{frame}{Arquivos úteis}
