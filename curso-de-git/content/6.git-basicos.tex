@@ -45,31 +45,45 @@
     \texttt{git config --global user.email "you@example.com"}
   \end{block}
   No \textbf{GitHub Codespaces}, essa configuração já vem preparada para você.
-\end{frame}
 
+  \pause
+
+  \begin{alertblock}{Uma curiosidade}
+    \centering
+    \Large
+    Você não precisa conhecer todos os comandos do Git.
+    \vspace{0.3cm} \\
+    \pause
+    \textbf{Na verdade, existem mais de 140 comandos.}
+  \end{alertblock}
+\end{frame}
 
 \begin{frame}{Criando o projeto}
-
-  \begin{block}{Nosso projeto}
-    Vamos criar o repositório do cardápio.
-  \end{block}
-
-  \begin{block}{\texttt{git init}: inicia o repositório}
+  \begin{block}{Opção 1: criando localmente}
+    Podemos começar criando um repositório na nossa máquina:
+    \vspace{0.3cm} \\
     \texttt{git init}
+    \vspace{0.3cm} \\
+    Depois de criar o repositório no GitHub, adicionamos o repositório remoto:
+    \vspace{0.3cm} \\
+    \texttt{git remote add origin "URL do repositório"}
   \end{block}
-
-  \begin{block}{Criando o arquivo README.md}
-    Vamos criar o primeiro arquivo do projeto:
-
-    \vspace{0.3cm}
-    \texttt{touch README.md}
+  \begin{block}{Opção 2: repositório já existente}
+    Se o repositório já foi criado no GitHub, podemos cloná-lo:
+    \vspace{0.3cm} \\
+    \texttt{git clone "URL do repositório"}
   \end{block}
+  O \textbf{GitHub Codespaces} já realiza o clone do repositório automaticamente.
 \end{frame}
-
 
 \begin{frame}{Nosso primeiro commit}
   \begin{columns}
     \column{0.5\textwidth}
+
+    \begin{block}{Criando o arquivo README.md}
+      \texttt{touch README.md}
+    \end{block}
+
     \begin{block}{Verificando as alterações}
       \texttt{git status}
     \end{block}
@@ -81,6 +95,10 @@
     \begin{block}{Registrando o primeiro estado do projeto}
       \texttt{git commit -m "Add README.md file"}
     \end{block}
+
+    \begin{block}{Subindo para o repositório remoto}
+      \texttt{git push}
+    \end{block}
     \column{0.5\textwidth}
     \centering
     \includegraphics[width=0.75\linewidth]{commit-meme.png}
@@ -89,41 +107,48 @@
 
 
 \begin{frame}{Consultando a história do projeto}
-  \begin{block}{\texttt{git log}: histórico de commits}
-    \texttt{git log}
 
-    \vspace{0.2cm}
-    Podemos ver como o projeto foi evoluindo ao longo do tempo.
-  \end{block}
-
-  \begin{block}{\texttt{git show}: detalhes de um commit}
-    \texttt{git show}
-
-    \vspace{0.2cm}
-    Mostra as alterações realizadas em um commit.
-  \end{block}
-
-\end{frame}
-
-
-\begin{frame}{Publicando o projeto}
-  \begin{block}{Pulicando o projeto no GitHub}
-    \texttt{git remote add origin "URL do repositório"}
-    \texttt{git push -u origin main}
-  \end{block}
-
-  \begin{block}{\texttt{git clone}: clona um repositório já existente}
-    \texttt{git clone "URL do repositório"}
-  \end{block}
-
-  \begin{block}{\texttt{git push}: envia os commits}
-    \texttt{git push}
-  \end{block}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{\texttt{git log}: histórico de commits}
+      \texttt{git log}
+      \vspace{0.2cm} \\
+      Podemos ver como o projeto foi evoluindo ao longo do tempo.
+    \end{block}
+    \begin{block}{\texttt{git show}: detalhes de um commit}
+      \texttt{git show "commit"}
+      \vspace{0.2cm}
+      Mostra as informações e as alterações realizadas em um commit específico.
+    \end{block}
+    \column{0.5\textwidth}
+    \begin{block}{\texttt{git diff}: diferenças entre estados do projeto}
+      \texttt{git diff "commit1" \ "commit2"}
+      \vspace{0.2cm} \\
+      Mostra as diferenças entre dois estados do projeto.
+    \end{block}
+    \begin{block}{\texttt{git blame}: autoria das linhas}
+      \texttt{git blame "arquivo"}
+      \vspace{0.2cm} \\
+      Mostra, linha por linha, qual commit e qual autor realizou a última alteração.
+    \end{block}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Arquivos úteis}
-  \begin{itemize}
-    \item \texttt{.gitignore} — listar arquivos que não devem ser versionados
-    \item \texttt{.gitattributes} — controlar tratamento de arquivos, diffs, merges
-  \end{itemize}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item \texttt{.gitignore}: listar arquivos que não devem ser versionados
+            \begin{itemize}
+              \item \texttt{arquivo.txt}: ignora um arquivo específico
+              \item \texttt{*.log}: ignora todos os arquivos com determinada extensão
+              \item \texttt{pasta/}: ignora uma pasta inteira
+              \item \texttt{!arquivo.log}: não ignora esse arquivo, mesmo que uma regra anterior o ignore
+            \end{itemize}
+      \item \texttt{.gitkeep}: convenção para manter diretórios vazios no repositório
+    \end{itemize}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{gitignore.jpeg}
+  \end{columns}
 \end{frame}
