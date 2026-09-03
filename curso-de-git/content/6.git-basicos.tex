@@ -107,30 +107,23 @@
 
 
 \begin{frame}{Consultando a história do projeto}
-
   \begin{columns}
     \column{0.5\textwidth}
     \begin{block}{\texttt{git log}: histórico de commits}
       \texttt{git log}
-      \vspace{0.2cm} \\
-      Podemos ver como o projeto foi evoluindo ao longo do tempo.
     \end{block}
     \begin{block}{\texttt{git show}: detalhes de um commit}
       \texttt{git show "commit"}
-      \vspace{0.2cm}
-      Mostra as informações e as alterações realizadas em um commit específico.
     \end{block}
-    \column{0.5\textwidth}
-    \begin{block}{\texttt{git diff}: diferenças entre estados do projeto}
+    \begin{block}{\texttt{git diff}: diferenças entre estados}
       \texttt{git diff "commit1" \ "commit2"}
-      \vspace{0.2cm} \\
-      Mostra as diferenças entre dois estados do projeto.
     \end{block}
     \begin{block}{\texttt{git blame}: autoria das linhas}
       \texttt{git blame "arquivo"}
-      \vspace{0.2cm} \\
-      Mostra, linha por linha, qual commit e qual autor realizou a última alteração.
     \end{block}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{git-blame.png}
   \end{columns}
 \end{frame}
 

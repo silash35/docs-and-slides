@@ -1,0 +1,74 @@
+\section{Branches e Colaboração}
+
+\begin{frame}
+  \begin{block}{Comandos básicos}
+    \texttt{git branch} \quad — lista as branches \\
+    \texttt{git branch "nome"} \quad — cria uma nova branch \\
+    \texttt{git push -u origin "nome"} \quad — envia a branch para o repositório remoto \\
+    \texttt{git branch -d "nome"} \quad — apaga uma branch
+  \end{block}
+  \begin{block}{\texttt{git checkout}}
+    \texttt{git checkout "nome"} \quad — muda para uma branch existente \\
+    \texttt{git checkout -b "nome"} \quad — cria e muda de branch \\
+    \texttt{git checkout "commit"} \quad — vai para um commit específico
+  \end{block}
+  \begin{block}{\texttt{git switch} (comando mais recente)}
+    \texttt{git switch "nome"} \quad — mesma função do checkout para branches \\
+    \texttt{git switch -c "nome"} \quad — cria e já muda para a nova branch
+  \end{block}
+\end{frame}
+
+\begin{frame}{Juntando o trabalho: git merge}
+  \begin{block}{Unindo branches}
+    Para trazer as mudanças de uma branch para a atual:
+    \vspace{0.2cm} \\
+    \texttt{git switch master} \\
+    \texttt{git merge "nome-da-branch"}
+  \end{block}
+  \begin{alertblock}{Conflitos de merge}
+    Acontecem quando a mesma parte do arquivo foi alterada de formas diferentes. O Git marca o trecho no arquivo para resolução manual.
+  \end{alertblock}
+\end{frame}
+
+\note{
+  \begin{itemize}
+    \item Crie uma branch nova, por exemplo, "cardapio-sobremesas" \ (veja no github se criou mesmo).
+    \item Faça um commit nessa branch, criando um arquivo de cardápio de sobremesas.
+    \item Edite o mesmo arquivo do cardápio na master, adicionando uma sobremesa diferente, e faça commit.
+    \item Tente dar merge da branch "cardapio-sobremesas" \ na master. O Git vai avisar que há conflito.
+    \item Resolva o conflito manualmente.
+    \item Faça um commit para salvar a resolução e finalize dando push para o repositório remoto.
+  \end{itemize}
+}
+
+\begin{frame}[fragile]{Reescrevendo o histórico: push $--$force}
+  \begin{block}{\texttt{git push $--$force}}
+    Sobrescreve o histórico remoto com o local, \textbf{ignorando} mudanças que outros possam ter enviado. Pode apagar trabalho de colegas!
+  \end{block}
+  \begin{alertblock}{Alternativa mais segura: $--$force-with-lease}
+    \texttt{git push $--$force-with-lease}
+    \vspace{0.2cm} \\
+    Só sobrescreve se ninguém mais alterou o remoto desde a sua última atualização. Se alguém alterou, o push falha e avisa.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Contribuindo com outros projetos}
+  \begin{block}{Fork}
+    Um \textbf{fork} cria uma cópia do repositório na sua própria conta do GitHub.
+  \end{block}
+  \begin{block}{Fluxo típico}
+    \begin{enumerate}
+      \item Faça um \textbf{fork} do repositório no GitHub
+      \item Clone o seu fork:
+            \texttt{git clone "URL-do-seu-fork"}
+      \item Crie uma branch para sua alteração:
+            \texttt{git switch -c "nome-da-branch"}
+      \item Faça as alterações, commit e push
+      \item Abra um \textbf{Pull Request} do seu fork para o repositório original
+    \end{enumerate}
+  \end{block}
+  \begin{alertblock}{Pull Request}
+    O PR permite que os mantenedores do projeto revisem suas alterações
+    antes de incorporá-las ao projeto original.
+  \end{alertblock}
+\end{frame}
