@@ -1,5 +1,36 @@
 \section{Branches e Colaboração}
 
+\begin{frame}{O que são branches?}
+  \centering
+  \only<1>{\includegraphics[width=1\linewidth]{git-branches.png}}
+  \only<2>{\includegraphics[width=1\linewidth]{git-merge.png}}
+\end{frame}
+
+\note{
+  Uma branch é uma linha independente de desenvolvimento no histórico do Git.
+
+  Imagine que estamos trabalhando na versão principal do projeto e precisamos desenvolver uma funcionalidade nova.
+  Em vez de alterar diretamente a versão principal, criamos uma branch e trabalhamos nela separadamente.
+
+  Enquanto isso, a versão principal pode continuar recebendo outras alterações.
+  Quando terminamos a funcionalidade, podemos juntar ambas as linhas novamente mediante um merge.
+
+  O merge registra essa integração criando um novo commit que possui como ancestrais as duas linhas unidas.
+
+  Curiosidade: uma branch é apenas um ponteiro para um commit.
+  Conforme novos commits são criados, esse ponteiro avança para acompanhar o histórico daquela linha de desenvolvimento.
+}
+
+% \begin{frame}{O que são tags?}
+%   \centering
+%   \includegraphics[width=1\linewidth]{git-tags.png}
+% \end{frame}
+
+% \note{
+%   Uma tag é um nome dado a um ponto específico do histórico.
+%   Ela é utilizada principalmente para marcar versões importantes do projeto, como uma versão de lançamento. Diferentemente de uma branch, uma tag não representa uma linha de desenvolvimento.
+% }
+
 \begin{frame}
   \begin{block}{Comandos básicos}
     \texttt{git branch} \quad — lista as branches \\
@@ -41,12 +72,12 @@
   \end{itemize}
 }
 
-\begin{frame}[fragile]{Reescrevendo o histórico: push $--$force}
-  \begin{block}{\texttt{git push $--$force}}
+\begin{frame}[fragile]{Reescrevendo o histórico: push -{}-force}
+  \begin{block}{\texttt{git push -{}-force}}
     Sobrescreve o histórico remoto com o local, \textbf{ignorando} mudanças que outros possam ter enviado. Pode apagar trabalho de colegas!
   \end{block}
-  \begin{alertblock}{Alternativa mais segura: $--$force-with-lease}
-    \texttt{git push $--$force-with-lease}
+  \begin{alertblock}{Alternativa mais segura: -{}-force-with-lease}
+    \texttt{git push -{}-force-with-lease}
     \vspace{0.2cm} \\
     Só sobrescreve se ninguém mais alterou o remoto desde a sua última atualização. Se alguém alterou, o push falha e avisa.
   \end{alertblock}
