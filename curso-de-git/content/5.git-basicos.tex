@@ -58,6 +58,34 @@
   \end{alertblock}
 \end{frame}
 
+\begin{frame}{Antes de continuar...}
+  \begin{center}
+    {\LARGE\textbf{Nunca usou um terminal?}}
+    \vspace{0.4cm} \\
+    {\large Sem problemas! Vamos com calma.}
+    \begin{block}{}
+      \centering
+      Antes de avançarmos, vamos conhecer \\
+      e aprender alguns comandos básicos.
+    \end{block}
+  \end{center}
+\end{frame}
+
+\note{
+  \texttt{diff}, \texttt{patch} e hashes são conceitos importantes no Git.
+
+  Um commit pode ser representado como um patch, contendo as alterações
+  realizadas e informações sobre o commit.
+  Como o patch registra apenas as diferenças, não é necessário enviar uma cópia completa do arquivo, economizando espaço e facilitando o envio das alterações.
+
+  Esse patch pode ser enviado por e-mail e aplicado ao repositório de outro desenvolvedor.
+
+  Esse fluxo é utilizado no desenvolvimento do kernel Linux: os desenvolvedores enviam patches por e-mail para revisão, e os mantenedores os aplicam ao repositório.
+
+  O Git também utiliza hashes para identificar e verificar seus objetos.
+  É uma segurança contra corrupção de dados.
+}
+
 \begin{frame}{Criando o projeto}
   \begin{block}{Opção 1: criando localmente}
     Podemos começar criando um repositório na nossa máquina:
