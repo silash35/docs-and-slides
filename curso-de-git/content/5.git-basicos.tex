@@ -1,0 +1,200 @@
+\section{Prática com Git}
+
+\begin{frame}{Nosso projeto}
+
+  \begin{block}{Objetivo}
+    Vamos escrever o cardápio de um restaurante utilizando o Git para acompanhar o processo de desenvolvimento.
+  \end{block}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Ambiente Local}
+        No seu computador:
+        \begin{itemize}
+          \item Instale o Git pelo site oficial.
+          \item Crie uma conta no GitHub.
+        \end{itemize}
+        \vspace{0.2cm}
+        \centering
+
+        \href{https://git-scm.com/}{\textbf{🌐 git-scm.com}} \quad \href{https://github.com/}{\textbf{🌐 github.com}}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Ambiente Online}
+        Vamos utilizar o GitHub Codespaces.
+
+        \vspace{0.2cm}
+        Ele fornece um ambiente de desenvolvimento já configurado para trabalharmos com o Git.
+
+        \vspace{0.2cm}
+        \centering
+        \href{https://github.com/codespaces}{\textbf{🌐 github.com/codespaces}}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Primeiro passo: identificar o autor}
+  \begin{block}{Configurando o Git}
+    Antes de começar, vamos informar quem está fazendo os commits.
+
+    \vspace{0.3cm}
+
+    \texttt{git config -{}-global user.name "Your Name"}
+
+    \texttt{git config -{}-global user.email "you@example.com"}
+  \end{block}
+  No \textbf{GitHub Codespaces}, essa configuração já vem preparada para você.
+
+  \pause
+
+  \begin{alertblock}{Uma curiosidade}
+    \centering
+    \Large
+    Você não precisa conhecer todos os comandos do Git.
+    \vspace{0.3cm} \\
+    \pause
+    \textbf{Na verdade, existem mais de 140 comandos.}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{Antes de continuar...}
+  \begin{center}
+    {\LARGE\textbf{Nunca usou um terminal?}}
+    \vspace{0.4cm} \\
+    {\large Sem problemas! Vamos com calma.}
+    \begin{block}{}
+      \centering
+      Antes de avançarmos, vamos conhecer \\
+      e aprender alguns comandos básicos.
+    \end{block}
+  \end{center}
+\end{frame}
+
+\note{
+  \texttt{diff}, \texttt{patch} e hashes são conceitos importantes no Git.
+
+  Um commit pode ser representado como um patch, contendo as alterações
+  realizadas e informações sobre o commit.
+  Como o patch registra apenas as diferenças, não é necessário enviar uma cópia completa do arquivo, economizando espaço e facilitando o envio das alterações.
+
+  Esse patch pode ser enviado por e-mail e aplicado ao repositório de outro desenvolvedor.
+
+  Esse fluxo é utilizado no desenvolvimento do kernel Linux: os desenvolvedores enviam patches por e-mail para revisão, e os mantenedores os aplicam ao repositório.
+
+  O Git também utiliza hashes para identificar e verificar seus objetos.
+  É uma segurança contra corrupção de dados.
+}
+
+\begin{frame}{Criando o projeto}
+  \begin{block}{Opção 1: criando localmente}
+    Podemos começar criando um repositório na nossa máquina:
+    \vspace{0.3cm} \\
+    \texttt{git init}
+    \vspace{0.3cm} \\
+    Depois de criar o repositório no GitHub, adicionamos o repositório remoto:
+    \vspace{0.3cm} \\
+    \texttt{git remote add origin "URL do repositório"}
+  \end{block}
+  \begin{block}{Opção 2: repositório já existente}
+    Se o repositório já foi criado no GitHub, podemos cloná-lo:
+    \vspace{0.3cm} \\
+    \texttt{git clone "URL do repositório"}
+  \end{block}
+  O \textbf{GitHub Codespaces} já realiza o clone do repositório automaticamente.
+\end{frame}
+
+\begin{frame}{Nosso primeiro commit}
+  \begin{columns}
+    \column{0.5\textwidth}
+
+    \begin{block}{Criando o arquivo README.md}
+      \texttt{touch README.md}
+    \end{block}
+
+    \begin{block}{Verificando as alterações}
+      \texttt{git status}
+    \end{block}
+
+    \begin{block}{Preparando o commit}
+      \texttt{git add .}
+    \end{block}
+
+    \begin{block}{Registrando o primeiro estado do projeto}
+      \texttt{git commit -m "Add README.md file"}
+    \end{block}
+
+    \begin{block}{Subindo para o repositório remoto}
+      \texttt{git push}
+    \end{block}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.75\linewidth]{commit-meme.png}
+  \end{columns}
+\end{frame}
+
+\note{
+  Escolher uma boa mensagem de commit é mais complexo do que parece:
+  ela deve ser curta, clara e representar a intenção da mudança.
+
+  Uma convenção comum é começar com letra maiúscula e usar o modo
+  imperativo, como \texttt{Add README.md file}, \texttt{Fix login bug}
+  ou \texttt{Update documentation}.
+
+  A ideia é completar a frase:
+
+  \begin{quote}
+    If applied, this commit will \ldots
+  \end{quote}
+
+  Em português:
+
+  \begin{quote}
+    Se aplicado, este commit irá \ldots
+  \end{quote}
+
+  Não existe obrigação de usar inglês, mas minha preferência é sempre
+  escrever os commits em inglês. Assim, não fechamos portas cedo:
+  o projeto pode crescer, receber colaboradores internacionais ou se
+  tornar público, e o histórico continua acessível para mais pessoas.
+}
+
+\begin{frame}{Consultando a história do projeto}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{block}{\texttt{git log}: histórico de commits}
+      \texttt{git log}
+    \end{block}
+    \begin{block}{\texttt{git show}: detalhes de um commit}
+      \texttt{git show "commit"}
+    \end{block}
+    \begin{block}{\texttt{git diff}: diferenças entre estados}
+      \texttt{git diff "commit1" \ "commit2"}
+    \end{block}
+    \begin{block}{\texttt{git blame}: autoria das linhas}
+      \texttt{git blame "arquivo"}
+    \end{block}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{git-blame.png}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Arquivos úteis}
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+      \item \texttt{.gitignore}: listar arquivos que não devem ser versionados
+            \begin{itemize}
+              \item \texttt{arquivo.txt}: ignora um arquivo específico
+              \item \texttt{*.log}: ignora todos os arquivos com determinada extensão
+              \item \texttt{pasta/}: ignora uma pasta inteira
+              \item \texttt{!arquivo.log}: não ignora esse arquivo, mesmo que uma regra anterior o ignore
+            \end{itemize}
+      \item \texttt{.gitkeep}: convenção para manter diretórios vazios no repositório
+    \end{itemize}
+    \column{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{gitignore.jpeg}
+  \end{columns}
+\end{frame}

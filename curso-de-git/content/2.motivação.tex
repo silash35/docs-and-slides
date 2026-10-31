@@ -1,0 +1,67 @@
+\section{Por que Git?}
+
+\begin{frame}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+    \includegraphics[width=1\linewidth]{final.doc.jpg}
+    \column{0.5\textwidth}
+    \pause
+    \begin{block}{E se a gente versionasse?}
+      \centering
+      \texttt{TCC-v0.1.docx} \\[0.3cm]
+      \texttt{TCC-v1.0.docx} \\[0.3cm]
+      \texttt{TCC-v1.1.docx} \\[0.3cm]
+      \texttt{TCC-v2.0.docx} \\
+      \vspace{0.4cm}
+      \href{https://semver.org/}{\textbf{🌐 semver.org}} \\
+    \end{block}
+    \pause
+    \vspace{0.3cm}
+    \begin{alertblock}{Mas...}
+      \centering
+      \normalsize
+      E se você quiser saber\\
+      \textbf{o que mudou entre uma versão e outra?}
+    \end{alertblock}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{E quando o trabalho é em grupo?}
+  \centering
+  \includegraphics[width=0.7\linewidth]{branches.png}
+  \vspace{0.6cm}
+  \pause
+  \begin{alertblock}{Problema}
+    Duas pessoas partiram da mesma versão \\
+    e fizeram alterações diferentes.
+  \end{alertblock}
+  \textbf{O que mudou? E como juntamos tudo?}
+\end{frame}
+
+\begin{frame}{E quando o projeto tem muitos arquivos?}
+  \large
+  \begin{columns}
+    \column{0.5\textwidth}
+    \includegraphics[width=1\linewidth]{OPTIMUS-website-project.png}
+    \column{0.5\textwidth}
+    \textbf{E agora?}
+    \vspace{0.2cm} \\
+    Como acompanhar todas essas alterações?
+    \vspace{0.2cm} \\
+    Cada versão precisa de uma cópia completa?
+  \end{columns}
+\end{frame}
+
+\note{
+  Antigamente, era comum uma empresa ter um servidor central onde ficava o projeto inteiro. Os desenvolvedores trabalhavam nos arquivos localmente e, quando terminavam alguma alteração, colocavam os arquivos novos de volta no servidor.
+
+  Mas se uma pessoa fazia uma alteração e colocava o arquivo no servidor. Depois, outra pessoa, que estava trabalhando em uma cópia mais antiga daquele mesmo arquivo, terminava o trabalho e colocava a versão dela no servidor. A versão mais nova simplesmente sobrescrevia a anterior.
+
+  Então surgiram mecanismos de bloqueio. Quando alguém começava a trabalhar em um arquivo, ele era marcado como “em uso”. Enquanto aquela pessoa estivesse trabalhando, ninguém mais poderia alterá-lo.
+
+  Só que as pessoas esqueciam de liberar os arquivos. Alguém começava uma alteração na sexta-feira e só voltava na segunda. Enquanto isso, todo mundo que precisava daquele arquivo ficava esperando.
+
+  E, conforme os projetos cresciam, a situação ficava cada vez mais complicada.
+
+  Em algumas empresas, chegou-se ao ponto de terem que contratar uma pessoa só para controlar tudo isso.
+}
