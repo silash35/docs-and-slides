@@ -1,0 +1,79 @@
+\documentclass[12pt]{article}
+\input{style.tex}
+
+% Dados do trabalho
+\autor{NOME COMPLETO}
+\titulodotrabalho{TÍTULO}
+\orientador{Título Nome Completo}
+\coorientador{Título Nome Completo}
+\datadotrabalho{XX}{XXXXXX}{202X}
+
+\begin{document}
+
+% Elementos pré-textuais
+\pagenumbering{roman}
+
+\makecapa
+\makefolhaderosto
+
+\addmembrocomissao{Prof.(a) .........}
+\addmembrocomissao{Prof.(a) .........}
+\addmembrocomissao{Prof.(a) .........}
+\makefolhadeaprovacao
+
+\newpage
+
+\setcounter{page}{4}
+
+\titulopretextual{AGRADECIMENTOS}
+Seção voltada a agradecimentos. (OPCIONAL)
+\newpage
+
+\input{content/0.resumo.tex}
+\newpage
+
+\listoffigures
+\newpage
+
+\listoftables
+\newpage
+
+\titulopretextual{LISTA DE ABREVIATURAS E SIGLAS}
+\noindent ABNT -- Associação Brasileira de Normas Técnicas
+\newpage
+
+\tableofcontents
+\newpage
+
+% Elementos textuais
+\pagenumbering{arabic}
+
+\input{content/1.introdução.tex}
+\clearpage
+\input{content/2.fundamentação-teórica.tex}
+\clearpage
+\input{content/3.método.tex}
+\clearpage
+\input{content/4.resultados.tex}
+\clearpage
+\input{content/5.conclusão.tex}
+\clearpage
+
+% Referências
+\printbibliography[title={REFERÊNCIAS}, heading=bibintoc]
+\newpage
+
+% Elementos pós-textuais
+\apendice{Exemplo de Apêndice}
+\label{ap:exemplo}
+Espaço voltado aos textos/resultados/materiais que sejam de desenvolvimento próprio seu.
+O apêndice deve ser, necessariamente, citado no corpo do seu texto.
+\newpage
+
+\anexo{Exemplo de Anexo}
+\label{an:exemplo}
+Espaço voltado à inclusão de material de terceiros, que sejam de extrema importância para o entendimento do seu trabalho.
+Inclua com a devida citação.
+O anexo deve ser, necessariamente, citado no corpo do seu texto.
+
+\end{document}

@@ -1,7 +1,7 @@
 % Modelo LaTeX para a matéria ENGF93.
 % Desenvolvido por Silas Henrique (silash35@gmail.com),
 % com contribuições de Daniel Diniz Santana (daniel.diniz@ufba.br).
-% Versão 2026.04.13
+% Versão 2026.08.21
 
 \usepackage[brazilian]{babel}
 \usepackage[T1]{fontenc}
@@ -24,6 +24,11 @@
 \fancyhf{}
 \fancyfoot[R]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
+
+\usepackage[titletoc,title]{appendix}
+\renewcommand{\appendixname}{Apêndice}
+\renewcommand{\appendixpagename}{Apêndices}
+\renewcommand{\appendixtocname}{Apêndices}
 
 \usepackage[backend=biber,style=abnt]{biblatex}
 \addbibresource{referencias.bib}

@@ -16,3 +16,10 @@ main.pdf
 *.vrb
 *.bcf
 *.run.xml
+*.blg
+*.loq
+*.lot
+*.lof
+*.idx
+*.ilg
+*.ind
